@@ -1,13 +1,35 @@
 import { TextField, Input, FormControl, InputLabel } from '@material-ui/core'
 import { signup, signupForm, field, button, title } from '../../style/Forms.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { withStyles } from '@material-ui/core/styles'
+import { signUp } from '../../actions/index';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function SignUp() {
-  const [showPass, setShowPass] = useState();
+const styles = {
+  formControl: {
+    marginTop: '1em',
+  }
+}
+
+function SignUp(props) {
   const [values, setValues] = useState({name: '', email: '', password: '', password_confirmation: ''});
-  
+  const { classes, attemptSignUp, currentUser } = props;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(currentUser) navigate('/');
+  }, [currentUser]);
+
+  const handleSubmit =() => {
+    attemptSignUp(values)
+  };
+
   const handleChange = (e) => {
-    console.log(e)
+    setValues((state) => {
+
+      return {...state, [e.target.id]: e.target.value}
+    });
   };
   
   return(
@@ -15,27 +37,58 @@ function SignUp() {
       <h1 className={title}>Sign Up</h1>
       <form className={signupForm}>
         <div className={field}>
-         <TextField fullWidth id="name" label="Name"/>
+         <TextField 
+         value={values.name}
+         fullWidth 
+         id="name" 
+         label="Name"
+         onChange={handleChange}
+         />
         </div> 
         <div className={field}>
-          <TextField fullWidth id="email" label="Email"/>
+          <TextField
+          value={values.email}
+          fullWidth 
+          id="email" 
+          label="Email"
+          onChange={handleChange}
+          />
         </div>
-        <FormControl fullWidth >
-          <InputLabel htmlFor="password-field">Password</InputLabel>
+        <FormControl fullWidth className={classes.formControl}>
+          <InputLabel htmlFor="password">Password</InputLabel>
           <Input 
-            id="password-field"
+            value={values.password}
+            id="password"
+            type="password"
+            onChange={handleChange}
+          />
+        </FormControl>
+
+        <FormControl fullWidth className={classes.formControl} >
+          <InputLabel htmlFor="password_confirmation">Confirm Password</InputLabel>
+          <Input 
+            value={values.password_confirmation}
+            id="password_confirmation"
             type="password"
             onChange={handleChange}
           />
         </FormControl>
 
         <div className={field}>
-          <button type="button" className={button}>Sign Up</button>
+          <button onClick={handleSubmit} type="button" className={button}>Sign Up</button>
         </div>
         
       </form>
     </div>
   );
-};;
+};
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.name
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  attemptSignUp: (data) => {dispatch(signUp(data))}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignUp));

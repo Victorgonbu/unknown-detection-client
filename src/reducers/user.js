@@ -1,8 +1,10 @@
 const userReducer = (state = {name: null, token: null}, action) => {
   const { payload, type } = action;
   switch(type) {
-    case 'UPDATE_USER_NAME': 
-      return {...state, name: payload}
+    case 'SET_USER': 
+      return {...state, 
+              name: payload.name, 
+              token: payload.token}
     default: 
     return state;
   }
