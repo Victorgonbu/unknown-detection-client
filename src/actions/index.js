@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const SET_USER = 'SET_USER';
+const SIGN_OUT = 'SIGN_OUT';
 
 const signUp = (data) => {
   return async (dispatch) => {
@@ -17,10 +18,15 @@ const signUp = (data) => {
   }
 };
 
+const signOut = () => ({
+  type: SIGN_OUT
+});
+
 const setUser = (data) => ({
   type: SET_USER, payload: data
 })
 
 export {
   signUp,
+  signOut
 }

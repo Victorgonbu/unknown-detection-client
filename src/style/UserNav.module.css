@@ -1,0 +1,21 @@
+.userContainer {
+  composes: flexCentered from './App.module.css';
+  border: 1px solid rgb(255, 0, 0);
+  height: 100%;
+  padding: 0 .5em;
+  position: relative;
+}
+
+.userContainer::before {
+  content: '';
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 5em;
+  position: absolute;
+  background-color: green;
+}
+
+.userContainer:hover {
+  background-color: red;
+}

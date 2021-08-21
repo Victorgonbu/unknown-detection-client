@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import './style/reset.css';
 import './style/index.css';
+import './utils/icons';
 
 const {store, persistor} = configureStore();
 
