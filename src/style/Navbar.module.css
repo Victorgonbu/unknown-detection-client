@@ -1,6 +1,8 @@
 .nav {
-  padding: 1em;
+  padding: 0 1em;
+  height: 9vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid;
 }

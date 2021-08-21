@@ -1,12 +1,11 @@
 import Navbar from './containers/Navbar';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <>
     <Navbar />
-    <div className="App">
-      unknown detection
-    </div>
+    <Outlet/>
     </>
   );
 }

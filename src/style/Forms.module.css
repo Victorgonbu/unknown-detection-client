@@ -1,0 +1,30 @@
+.signup {
+  composes: flexCentered from './App.module.css';
+  flex-direction: column;
+  border: 1px solid red;
+  min-height: 91vh;
+}
+
+.signupForm {
+  border: 1px solid green;
+  width: 100%;
+  padding: 0 1em;
+  max-width: 400px;
+}
+
+.title {
+  font-size: 2em; 
+  margin-bottom: 1em;
+}
+
+.field {
+  margin: 1em 0;
+}
+
+.button {
+  width: 100%;
+  padding: 1em;
+  background-color: #000;
+  color: #fff;
+
+}
