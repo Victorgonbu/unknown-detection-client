@@ -1,3 +1,7 @@
+:root {
+  --back-color: #f7f5fa;
+}
+
 #root {
   
   min-height: 100vh;
