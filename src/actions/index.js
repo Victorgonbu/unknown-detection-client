@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const SET_USER = 'SET_USER';
 const SIGN_OUT = 'SIGN_OUT';
+const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 
 const signUp = (data) => {
   return async (dispatch) => {
@@ -26,7 +27,12 @@ const setUser = (data) => ({
   type: SET_USER, payload: data
 })
 
+const toggleDropdown = () => ({
+  type: TOGGLE_DROPDOWN
+});
+
 export {
   signUp,
-  signOut
+  signOut,
+  toggleDropdown,
 }

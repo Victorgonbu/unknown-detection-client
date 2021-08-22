@@ -6,16 +6,28 @@
   position: relative;
 }
 
-.userContainer::before {
-  content: '';
+.dropdown {
+  composes: flexCentered from './App.module.css';
+  flex-direction: column;
   top: 100%;
-  right: 0;
-  left: 0;
-  height: 5em;
+  right: -1em;
+  left: -1em;
   position: absolute;
   background-color: green;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: 100ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
 }
 
-.userContainer:hover {
-  background-color: red;
+.item {
+  padding: .5em 0;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  
+}
+
+.active {
+  transform: scaleY(1);
 }
