@@ -1,10 +1,12 @@
 import { TextField, Input, FormControl, InputLabel } from '@material-ui/core'
-import { signup, signupForm, field, button, title } from '../../style/Forms.module.css';
+import { container, formContainer, field, button, title } from '../../style/Forms.module.css';
 import { useState, useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles'
-import { signUp } from '../../actions/index';
+import { withStyles } from '@material-ui/core/styles';
+import { authenticateUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import SubmitButton from '../presentationals/SubmitButton';
+import { SIGNUP } from '../../API';
 
 const styles = {
   formControl: {
@@ -22,7 +24,7 @@ function SignUp(props) {
   }, [currentUser]);
 
   const handleSubmit =() => {
-    attemptSignUp(values)
+    attemptSignUp(values, SIGNUP);
   };
 
   const handleChange = (e) => {
@@ -33,9 +35,9 @@ function SignUp(props) {
   };
   
   return(
-    <div className={signup}>
+    <div className={container}>
       <h1 className={title}>Sign Up</h1>
-      <form className={signupForm}>
+      <form className={formContainer}>
         <div className={field}>
          <TextField 
          value={values.name}
@@ -74,9 +76,7 @@ function SignUp(props) {
           />
         </FormControl>
 
-        <div className={field}>
-          <button onClick={handleSubmit} type="button" className={button}>Sign Up</button>
-        </div>
+        <SubmitButton text="Sign up" handleSubmit={handleSubmit}/>
         
       </form>
     </div>
@@ -88,7 +88,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  attemptSignUp: (data) => {dispatch(signUp(data))}
+  attemptSignUp: (data, url) => {dispatch(authenticateUser(data, url))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignUp));

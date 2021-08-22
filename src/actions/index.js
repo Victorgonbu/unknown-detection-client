@@ -4,11 +4,11 @@ const SET_USER = 'SET_USER';
 const SIGN_OUT = 'SIGN_OUT';
 const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 
-const signUp = (data) => {
+const authenticateUser = (data, url) => {
   return async (dispatch) => {
     try {
       const userData = {user: data};
-      const request = await axios.post('/api/v1/user', userData);
+      const request = await axios.post(url, userData);
       if(request.data.status === 400) throw request.data.errors
       dispatch(setUser(request.data))
 
@@ -32,7 +32,7 @@ const toggleDropdown = () => ({
 });
 
 export {
-  signUp,
+  authenticateUser,
   signOut,
   toggleDropdown,
 }
