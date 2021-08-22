@@ -1,5 +1,7 @@
 import { title, field, container, formContainer } from '../../style/Forms.module.css';
-import { TextField, FormControl, Input, InputLabel } from '@material-ui/core';
+import { TextField, FormControl, Input, InputLabel, 
+        InputAdornment, IconButton } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import SubmitButton from '../presentationals/SubmitButton';
@@ -52,6 +54,16 @@ function Login(props) {
             id="password"
             type={showPassword ?  'text':'password'}
             onChange={handleChange}
+            endAdornment={
+              <InputAdornment>
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword((state) => !state)}
+                >
+                  {showPassword ? <Visibility />:<VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </FormControl>
 
