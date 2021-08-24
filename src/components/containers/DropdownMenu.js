@@ -1,5 +1,6 @@
-import { container, active, footer, top } from '../../style/Dropdown.module.css';
-import { Link } from 'react-router-dom';
+import { container, active, footer, top, links, 
+  link, activeLink } from '../../style/Dropdown.module.css';
+import { NavLink as Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
 import useToggleEffect from '../../hooks/useToggleEffect';
@@ -18,6 +19,9 @@ const DropdownMenu = (props) => {
   <div ref={dropdownRef} className={container}>
     <div className={top}>
       {username ?  <UserLinks /> : <AuthLinks handleLink={toggleDropdown}/>}
+      <div className={links}>
+        <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
+      </div>
     </div>
     <p className={footer}>Victor @2021</p>
   </div>
