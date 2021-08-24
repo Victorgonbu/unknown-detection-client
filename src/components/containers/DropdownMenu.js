@@ -9,7 +9,8 @@ import AuthLinks from '../presentationals/AuthLinks';
 import UserLinks from '../presentationals/UserLinks';
 
 const DropdownMenu = (props) => {
-  const { dropdownActive, toggleDropdown, username } = props;
+  const { dropdownActive, toggleDropdown, 
+    username, email, } = props;
   const dropdownRef = useRef();
 
   useToggleEffect(dropdownRef, active, [dropdownActive]);
@@ -18,10 +19,14 @@ const DropdownMenu = (props) => {
   return (
   <div ref={dropdownRef} className={container}>
     <div className={top}>
-      {username ?  <UserLinks /> : <AuthLinks handleLink={toggleDropdown}/>}
-      <div className={links}>
-        <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
-      </div>
+      {username ?  <UserLinks name={username} email={email} /> :
+      <>
+        <AuthLinks handleLink={toggleDropdown}/>
+        <div className={links}>
+          <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
+        </div>
+      </>
+      }
     </div>
     <p className={footer}>Victor @2021</p>
   </div>
@@ -30,7 +35,8 @@ const DropdownMenu = (props) => {
 
 const mapStateToProps = (state) => ({
   dropdownActive: state.user.dropdown,
-  username: state.user.name
+  username: state.user.name,
+  email: state.user.email,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -7,7 +7,8 @@ const userReducer = (state = {
   switch(type) {
     case 'SET_USER': 
       return {...state, 
-              name: payload.name, 
+              name: payload.name,
+              email: payload.email,
               token: payload.token}
     case 'SIGN_OUT': 
       return {...state, name: null, token: null} 

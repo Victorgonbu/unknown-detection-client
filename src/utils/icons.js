@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBars, faSearch);
+library.add(faBars, faSearch, faUser);
 
 export default library;
