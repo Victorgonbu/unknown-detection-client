@@ -8,11 +8,11 @@ function AppRouter () {
     { path: '/', 
     element: <App/>,
     children: [
-      {path: 'sign-up', element: <SignUp />},
-      {path: 'login', element: <Login /> }
     ]
-    }
-  ]);
+    },
+    { path: '/signup', element: <SignUp /> },
+    { path: '/login', element: <Login/> }
+  ]); 
   return routes;
 }
 

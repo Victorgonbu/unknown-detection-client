@@ -1,13 +1,14 @@
-import { container, active, dropdownLink,
-         title, footer, top } from '../../style/Dropdown.module.css';
+import { container, active, footer, top } from '../../style/Dropdown.module.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
 import useToggleEffect from '../../hooks/useToggleEffect';
 import { toggleDropdown } from '../../actions';
+import AuthLinks from '../presentationals/AuthLinks';
+import UserLinks from '../presentationals/UserLinks';
 
 const DropdownMenu = (props) => {
-  const { dropdownActive, toggleDropdown } = props;
+  const { dropdownActive, toggleDropdown, username } = props;
   const dropdownRef = useRef();
 
   useToggleEffect(dropdownRef, active, [dropdownActive]);
@@ -16,9 +17,7 @@ const DropdownMenu = (props) => {
   return (
   <div ref={dropdownRef} className={container}>
     <div className={top}>
-      <h1 className={title}>Welcome to Unknown Detections! </h1>
-      <Link onClick={toggleDropdown} className={dropdownLink} to="sign-up">Sign up</Link>
-      <Link onClick={toggleDropdown} className={dropdownLink} to="login" >Log in</Link>
+      {username ?  <UserLinks /> : <AuthLinks handleLink={toggleDropdown}/>}
     </div>
     <p className={footer}>Victor @2021</p>
   </div>
@@ -26,7 +25,8 @@ const DropdownMenu = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  dropdownActive: state.user.dropdown
+  dropdownActive: state.user.dropdown,
+  username: state.user.name
 });
 
 const mapDispatchToProps = (dispatch) => ({
