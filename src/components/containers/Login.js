@@ -23,7 +23,7 @@ function Login(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(username) navigate('/')
+    if(username) navigate('/posts')
   }, [username]);
 
   const handleChange = (e) => {

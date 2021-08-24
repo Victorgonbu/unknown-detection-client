@@ -1,17 +1,10 @@
 import { nav } from '../../style/Navbar.module.css'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { signOut, toggleDropdown } from '../../actions/index';
-import {useNavigate} from 'react-router-dom';
+import { toggleDropdown } from '../../actions/index';
 
 function Navbar (props) {
-  const { username, signOut, toggleDropdown} = props;
-  const navigate = useNavigate();
-
-  const handleSingOut = () => {
-    signOut();
-    navigate('/');
-  }
+  const { toggleDropdown} = props;
 
   const handleDropdown = () => {
     toggleDropdown();
@@ -30,15 +23,10 @@ function Navbar (props) {
   );
 };
 
-const mapStateToProps = (state) => ({
-  username: state.user.name
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  signOut: () => {dispatch(signOut())},
   toggleDropdown: () => {dispatch(toggleDropdown())},  
 });
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(null, mapDispatchToProps)(Navbar);

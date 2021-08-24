@@ -4,17 +4,25 @@ import { NavLink as Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
 import useToggleEffect from '../../hooks/useToggleEffect';
-import { toggleDropdown } from '../../actions';
+import { toggleDropdown, logOut } from '../../actions';
 import AuthLinks from '../presentationals/AuthLinks';
 import UserLinks from '../presentationals/UserLinks';
+import FooterLinks from '../presentationals/FooterLinks';
+import { useNavigate } from 'react-router-dom';
 
 const DropdownMenu = (props) => {
   const { dropdownActive, toggleDropdown, 
-    username, email, } = props;
+    username, email, logOut } = props;
   const dropdownRef = useRef();
+  const navigate = useNavigate();
 
   useToggleEffect(dropdownRef, active, [dropdownActive]);
   
+  const handleLogOut = () => {
+    console.log('mostro');
+    logOut();
+    navigate('/posts');
+  };
 
   return (
   <div ref={dropdownRef} className={container}>
@@ -28,7 +36,11 @@ const DropdownMenu = (props) => {
       </>
       }
     </div>
-    <p className={footer}>Victor @2021</p>
+
+    { username ? <FooterLinks handleLogOut={handleLogOut} /> 
+    : 
+    <p className={footer}>Victor @2021</p> }
+    
   </div>
   )
 };
@@ -40,7 +52,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleDropdown: () => {dispatch(toggleDropdown())}
+  toggleDropdown: () => {dispatch(toggleDropdown())},
+  logOut: () => { dispatch(logOut()) }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);

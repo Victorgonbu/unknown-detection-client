@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const SET_USER = 'SET_USER';
-const SIGN_OUT = 'SIGN_OUT';
+const LOG_OUT = 'SIGN_OUT';
 const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 
 const authenticateUser = (data, url) => {
@@ -19,8 +19,8 @@ const authenticateUser = (data, url) => {
   }
 };
 
-const signOut = () => ({
-  type: SIGN_OUT
+const logOut = () => ({
+  type: LOG_OUT
 });
 
 const setUser = (data) => ({
@@ -33,6 +33,6 @@ const toggleDropdown = () => ({
 
 export {
   authenticateUser,
-  signOut,
+  logOut,
   toggleDropdown,
 }

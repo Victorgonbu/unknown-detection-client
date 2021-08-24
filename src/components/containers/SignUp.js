@@ -20,7 +20,7 @@ function SignUp(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(currentUser) navigate('/');
+    if(currentUser) navigate('/posts');
   }, [currentUser]);
 
   const handleSubmit =() => {
