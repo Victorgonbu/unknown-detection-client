@@ -11,7 +11,7 @@ function UserLinks(props) {
       <div className={userInfo}>
         <p className={iconContainer}><FontAwesomeIcon className={icon} icon="user"/></p>
         <p className={userName}>{name}</p>
-        <span className={userEmail}>{email}</span>
+        <span className={userEmail}>@{email}</span>
       </div>
       <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
     </div>
