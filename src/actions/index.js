@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { POSTS } from '../API';
 
 const SET_USER = 'SET_USER';
 const LOG_OUT = 'SIGN_OUT';
@@ -31,8 +32,21 @@ const toggleDropdown = () => ({
   type: TOGGLE_DROPDOWN
 });
 
+
+const getAllPosts = () => {
+  return async (dispatch) => {
+    try {
+      const request = axios.get(POSTS);
+      console.log(request);
+    }catch(error) {
+      console.log(error);
+    }
+  }
+};
+
 export {
   authenticateUser,
   logOut,
   toggleDropdown,
+  getAllPosts
 }
