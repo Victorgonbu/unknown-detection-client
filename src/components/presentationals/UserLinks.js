@@ -14,6 +14,7 @@ function UserLinks(props) {
         <span className={userEmail}>@{email}</span>
       </div>
       <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
+      <Link to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
     </div>
   );
 }

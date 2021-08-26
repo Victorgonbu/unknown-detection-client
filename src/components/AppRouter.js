@@ -3,6 +3,7 @@ import App from './App';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Posts from './containers/Posts';
+import Favorites from './containers/Favorites';
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -18,7 +19,8 @@ function AppRouter () {
     { path: '/', 
     element: <App/>,
     children: [
-      { path: '/posts', element: <Posts /> }
+      { path: '/posts', element: <Posts /> },
+      { path: '/favorites', element: <Favorites /> }
     ]
     },
     { path: 'signup', element: <SignUp /> },
