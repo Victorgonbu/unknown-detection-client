@@ -14,7 +14,7 @@
   min-width: 100vw;
   position: relative;
   left: -60vw;
-  box-shadow: 1px 1px 10px gray;
+  box-shadow: -3px 5px 10px var(--light-gray);
   transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 

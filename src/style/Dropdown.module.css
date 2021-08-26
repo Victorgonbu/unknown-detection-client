@@ -46,7 +46,7 @@
 }
 
 .userName {
-  color: #333;
+  color: var(--light-black);
   font-size: 1.2em;
   font-weight: bold;
 }

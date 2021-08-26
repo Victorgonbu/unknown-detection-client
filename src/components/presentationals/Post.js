@@ -1,4 +1,5 @@
-import { post, postTitle, postImage, postLocation, postInfo } from '../../style/Post.module.css';
+import { post, postTitle, postImage, 
+  postLocation, postInfo, locationLabel } from '../../style/Post.module.css';
 
 function Post (props) {
   const {imageUrl, title, location} = props;
@@ -9,7 +10,7 @@ function Post (props) {
         <p className={postTitle}>{title}</p>
         <div className={postLocation}>
           <p>{location}</p>
-          <p>Location</p>
+          <p className={locationLabel}>Location</p>
         </div>
       </div>
     </div>
