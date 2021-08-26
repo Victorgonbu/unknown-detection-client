@@ -6,4 +6,5 @@
 #root {
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
+  background-color: var(--back-color);
 }

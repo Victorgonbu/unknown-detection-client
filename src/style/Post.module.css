@@ -1,11 +1,11 @@
 .container {
-  border: 1px solid green;
   height: 91vh;
 }
 
 .postInfo {
   display: flex;
   justify-content: space-between;
+  padding: 1em 1em 0 1em;
 }
 
 .postImage {
@@ -16,14 +16,13 @@
 }
 
 .carouselContainer {
-  border: 1px solid red;
   height: 100%;
 }
 
 .carouselItem {
   box-sizing: border-box;
-  border: 1px solid blue;
   flex: none;
+  border: 1px solid var(--light-gray);
   max-width: calc(80vw - 5px);
   margin-left: 1rem;
 }

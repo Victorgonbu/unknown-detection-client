@@ -21,18 +21,21 @@
   left: 0;
 }
 
+.authLinks {
+  padding: 0 1em;
+}
+
 .authLink {
   display: block;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--light-gray);
   text-align: center;
   padding: 1em;
   text-decoration: none;
   color: black;
   margin-bottom: 5px;
-  
 }
 .top {
-  height: 90%
+  height: 90%;
 }
 
 .userInfo {
@@ -98,5 +101,4 @@
   align-items: flex-end;
   height: 10%;
   vertical-align: bottom;
-  border: 1px solid blue;
 }
