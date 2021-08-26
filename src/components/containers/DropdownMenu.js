@@ -19,15 +19,15 @@ const DropdownMenu = (props) => {
   useToggleEffect(dropdownRef, active, [dropdownActive]);
   
   const handleLogOut = () => {
-    console.log('mostro');
     logOut();
+    toggleDropdown();
     navigate('/posts');
   };
 
   return (
   <div ref={dropdownRef} className={container}>
     <div className={top}>
-      {username ?  <UserLinks name={username} email={email} /> :
+      {username ?  <UserLinks handleToggle={toggleDropdown} name={username} email={email} /> :
       <>
         <AuthLinks handleLink={toggleDropdown}/>
         <div className={links}>

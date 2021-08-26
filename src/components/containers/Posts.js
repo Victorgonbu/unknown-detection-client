@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllPosts } from '../../actions/index';
+import { getPosts } from '../../actions/index';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { container, carouselContainer, 
@@ -8,7 +8,8 @@ import { container, carouselContainer,
 import Post from '../presentationals/Post';
 
 function Posts (props) {
-  const { getPosts, allPosts, username } = props;
+  const { getPosts, allPosts, username,
+    favoriteOnly, } = props;
 
   const responsive = {
     mobile: {
@@ -18,7 +19,8 @@ function Posts (props) {
   };
 
   useEffect(() => {
-    getPosts();
+    if (favoriteOnly) getPosts('favorite');
+    else getPosts('all'); 
   },[username]);
 
   console.log(allPosts);
@@ -58,7 +60,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => {dispatch(getAllPosts());},
+  getPosts: (type) => {dispatch(getPosts(type));},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

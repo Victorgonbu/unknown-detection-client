@@ -4,7 +4,7 @@ import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink as Link } from 'react-router-dom';
 
 function UserLinks(props) {
-  const { name, email } = props;
+  const { name, email, handleToggle } = props;
 
   return(
     <div className={links}>
@@ -13,8 +13,8 @@ function UserLinks(props) {
         <p className={userName}>{name}</p>
         <span className={userEmail}>@{email}</span>
       </div>
-      <Link to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
-      <Link to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
+      <Link onClick={handleToggle} to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
+      <Link onClick={handleToggle} to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
     </div>
   );
 }

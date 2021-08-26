@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POSTS } from '../API';
+import { POSTS, FAVORITE_POSTS } from '../API';
 
 const SET_USER = 'SET_USER';
 const LOG_OUT = 'SIGN_OUT';
@@ -37,12 +37,12 @@ const authenticateUser = (data, url) => {
   }
 };
 
-const getAllPosts = () => {
+const getPosts = (type) => {
   return async (dispatch, getState) => {
     try {
+      const url = type === 'favorite' ? FAVORITE_POSTS : POSTS
       const authToken = getState().user.token;
-      console.log(authToken);
-      const request = await axios.get(POSTS, { headers: { Authorization: `Bearer ${authToken}` } });
+      const request = await axios.get(url, { headers: { Authorization: `Bearer ${authToken}` } });
       dispatch(setPosts(request.data.data));
     }catch(error) {
       console.log(error);
@@ -54,5 +54,5 @@ export {
   authenticateUser,
   logOut,
   toggleDropdown,
-  getAllPosts
+  getPosts
 }
