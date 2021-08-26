@@ -2,3 +2,32 @@
   border: 1px solid green;
   height: 91vh;
 }
+
+.postInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postImage {
+  width: 100%;
+  height: 40vh;
+  max-height: 300px;
+
+}
+
+.carouselContainer {
+  border: 1px solid red;
+  height: 100%;
+}
+
+.carouselItem {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  flex: none;
+  max-width: calc(80vw - 5px);
+  margin-left: 1rem;
+}
+
+.carouselDots {
+  bottom:15vh;
+}

@@ -43,7 +43,7 @@ const getAllPosts = () => {
       const authToken = getState().user.token;
       console.log(authToken);
       const request = await axios.get(POSTS, { headers: { Authorization: `Bearer ${authToken}` } });
-      console.log(request);
+      dispatch(setPosts(request.data.data));
     }catch(error) {
       console.log(error);
     }

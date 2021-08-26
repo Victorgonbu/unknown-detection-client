@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 import { getAllPosts } from '../../actions/index';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { container, post } from '../../style/Post.module.css';
+import { container, carouselContainer, 
+  carouselItem, carouselDots } from '../../style/Post.module.css';
+import Post from '../presentationals/Post';
 
 function Posts (props) {
-  const { getPosts } = props;
+  const { getPosts, allPosts } = props;
 
   const responsive = {
     mobile: {
       breakpoint : { max: 400, min: 0 },
-      items: 1
+      items: 1.2
     }
   };
 
@@ -19,21 +21,42 @@ function Posts (props) {
     getPosts();
   },[]);
 
+  console.log(allPosts);
+
   return(
     <div className={container}>
+      {allPosts 
+      &&
       <Carousel 
-      responsive={responsive}
-      deviceType="mobile"
+        responsive={responsive}
+        deviceType="mobile"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        itemClass={carouselItem}
+        containerClass={carouselContainer}
+        dotListClass={carouselDots}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        focusOnSelect={true}
       >
-        <div className={post}></div>
-        <div className={post}></div>
+        { allPosts.map((post) =>  (<Post 
+                                      title={post.attributes.title}
+                                      imageUrl={post.attributes.image}
+                                      description={post.attributes.description}
+                                      location={post.attributes.location}
+                                    />)) }
       </Carousel>
+      }
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  allPosts: state.posts.all
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getPosts: () => {dispatch(getAllPosts());},
 });
 
-export default connect(null, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
