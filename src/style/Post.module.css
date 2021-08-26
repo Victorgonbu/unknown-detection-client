@@ -5,15 +5,36 @@
 .postInfo {
   display: flex;
   justify-content: space-between;
-  padding: 1em 1em 0 1em;
+  align-items: center;
+  padding: 1em;
+}
+
+.titleFavorite {
+  margin-right: 10px;
+}
+
+.postTitle {
+  margin-bottom: .5em;
 }
 
 .postLocation {
   text-align: center;
+  border-left: 1px solid var(--light-gray);
+  padding-left: 10px;
+}
+
+.postFavorite {
+  font-weight: 100;
+  color: #000;
+}
+
+.favoriteIcon {
+  color: var(--red);
 }
 
 .locationLabel {
-  padding-top: .5em;
+  font-size: .8em;
+  padding-top: .1em;
   color: gray;
 }
 

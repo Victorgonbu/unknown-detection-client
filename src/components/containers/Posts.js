@@ -8,7 +8,7 @@ import { container, carouselContainer,
 import Post from '../presentationals/Post';
 
 function Posts (props) {
-  const { getPosts, allPosts } = props;
+  const { getPosts, allPosts, username } = props;
 
   const responsive = {
     mobile: {
@@ -19,7 +19,7 @@ function Posts (props) {
 
   useEffect(() => {
     getPosts();
-  },[]);
+  },[username]);
 
   console.log(allPosts);
 
@@ -44,6 +44,7 @@ function Posts (props) {
                                       imageUrl={post.attributes.image}
                                       description={post.attributes.description}
                                       location={post.attributes.location}
+                                      favorite={post.attributes.favorite}
                                     />)) }
       </Carousel>
       }
@@ -52,7 +53,8 @@ function Posts (props) {
 };
 
 const mapStateToProps = (state) => ({
-  allPosts: state.posts.all
+  allPosts: state.posts.all,
+  username: state.user.name
 });
 
 const mapDispatchToProps = (dispatch) => ({
