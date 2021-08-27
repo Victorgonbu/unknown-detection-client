@@ -1,4 +1,3 @@
-import { Favorite } from "@material-ui/icons";
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
 import { postFavorite, favoriteIcon } from '../../style/Post.module.css';
 
