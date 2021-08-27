@@ -19,7 +19,7 @@ function Post (props) {
           <p className={postTitle}>{title}</p>
           {favorite 
           &&
-          <Favorite />
+          <Favorite withLabel inFavorites={favorite} />
           }
         </div>
         <Location value={location}/>

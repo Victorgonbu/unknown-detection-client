@@ -1,19 +1,26 @@
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
-import { postFavorite, favoriteIcon, favoriteCounter } from '../../style/Post.module.css';
+import { postFavorite, favoriteIcon, favoriteCounter, activeFavorite } from '../../style/Post.module.css';
+import { useEffect } from 'react';
 
 function Favorite (props) {
-  const { withLabel, counter } = props;
+  const { withLabel, counter, inFavorites } = props;
+
+  const favIconClasses = () => {
+    if(inFavorites) return `${favoriteIcon} ${activeFavorite}`
+    return favoriteIcon
+  };
+
   return(
     <div className={postFavorite}>
       <FontAwesomeIcon 
-      className={favoriteIcon} 
+      className={favIconClasses()} 
       icon="heart"/>
       {
         withLabel &&
         <span> Favorite</span> 
       }
 
-      { counter &&
+      { counter >= 0 &&
         <span className={favoriteCounter}>{counter}</span>
       }
       

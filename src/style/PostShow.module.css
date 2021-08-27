@@ -62,3 +62,8 @@
 .descriptionText {
   color: var(--light-black);
 }
+
+.favoriteButton {
+  width: 100%;
+  padding: 1em;
+}

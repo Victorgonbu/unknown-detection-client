@@ -4,7 +4,8 @@ import axios from 'axios';
 import { POSTS } from '../../API';
 import { backdropContainer, fullSize, 
   absoluteLabel, authorDetails, authorName,
-  description, descriptionTop, descriptionTitle, descriptionText } from '../../style/PostShow.module.css'
+  description, descriptionTop, descriptionTitle, 
+  descriptionText, favoriteButton } from '../../style/PostShow.module.css'
 import { container } from '../../style/Post.module.css';
 import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
@@ -57,16 +58,12 @@ function Post (props) {
         <div className={description}>
           <div className={descriptionTop}>
             <h1 className={descriptionTitle}>About this</h1>
-            { post.favorite
-              &&
-              <Favorite counter={favorites} />
-            }
-
+              <Favorite inFavorites={post.favorite} counter={favorites} />
           </div>
           <p className={descriptionText}>{post.description}</p>
         </div>
+        <button type="button" className={favoriteButton} >Add to favorites</button>
       </>
-      
       }
     </div>
   );
