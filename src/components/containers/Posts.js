@@ -10,7 +10,7 @@ import Post from '../presentationals/Post';
 function Posts (props) {
   const { getPosts, allPosts, username,
     favoriteOnly, } = props;
-
+    console.log(allPosts)
   const responsive = {
     mobile: {
       breakpoint : { max: 400, min: 0 },
@@ -21,7 +21,7 @@ function Posts (props) {
   useEffect(() => {
     if (favoriteOnly) getPosts('favorite');
     else getPosts('all'); 
-  },[username]);
+  },[username, favoriteOnly]);
 
   console.log(allPosts);
 
@@ -47,6 +47,7 @@ function Posts (props) {
                                       description={post.attributes.description}
                                       location={post.attributes.location}
                                       favorite={post.attributes.favorite}
+                                      id={post.id}
                                     />)) }
       </Carousel>
       }

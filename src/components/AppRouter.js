@@ -3,7 +3,7 @@ import App from './App';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Posts from './containers/Posts';
-import Favorites from './containers/Favorites';
+import Post from './containers/Post';
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -20,7 +20,8 @@ function AppRouter () {
     element: <App/>,
     children: [
       { path: '/posts', element: <Posts /> },
-      { path: '/favorites', element: <Favorites /> }
+      { path: '/favorites', element: <Posts favoriteOnly /> },
+      { path: '/posts/:title',  element: <Post /> }
     ]
     },
     { path: 'signup', element: <SignUp /> },
