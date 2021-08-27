@@ -33,6 +33,12 @@
   color: #000;
 }
 
+.favoriteCounter {
+  font-weight: 700;
+  color: var(--light-black);
+  margin-left: 5px;
+}
+
 .favoriteIcon {
   color: var(--red);
 }

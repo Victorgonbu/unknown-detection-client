@@ -44,5 +44,21 @@
 }
 
 .description {
-  padding: 1em;
+  padding: 1.5em 2em;
+}
+
+.descriptionTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionTitle {
+  display: inline-block;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1em;
+}
+
+.descriptionText {
+  color: var(--light-black);
 }
