@@ -1,7 +1,7 @@
-import { links, activeLink, link, userInfo, icon, 
-  iconContainer, userName, userEmail } from '../../style/Dropdown.module.css';
-import {FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { links, activeLink, link, userInfo,
+  userName, userEmail } from '../../style/Dropdown.module.css';
 import { NavLink as Link } from 'react-router-dom';
+import UserAvatar from './UserAvatar';
 
 function UserLinks(props) {
   const { name, email, handleToggle } = props;
@@ -9,7 +9,7 @@ function UserLinks(props) {
   return(
     <div className={links}>
       <div className={userInfo}>
-        <p className={iconContainer}><FontAwesomeIcon className={icon} icon="user"/></p>
+        <UserAvatar />
         <p className={userName}>{name}</p>
         <span className={userEmail}>@{email}</span>
       </div>

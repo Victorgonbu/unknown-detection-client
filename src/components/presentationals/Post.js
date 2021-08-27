@@ -1,8 +1,8 @@
 import { post, postTitle, postImage, 
-  postLocation, postInfo, postFavorite, 
-  locationLabel, titleFavorite, favoriteIcon } from '../../style/Post.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  postInfo, titleFavorite } from '../../style/Post.module.css';
 import { useNavigate } from 'react-router-dom';
+import Location from './Location';
+import Favorite from './Favorite';
 
 function Post (props) {
   const {imageUrl, title, location, favorite, id} = props;
@@ -19,18 +19,10 @@ function Post (props) {
           <p className={postTitle}>{title}</p>
           {favorite 
           &&
-          <div className={postFavorite}>
-            <FontAwesomeIcon 
-            className={favoriteIcon} 
-            icon="heart"/>
-            <span> Favorite</span> 
-          </div>
+          <Favorite />
           }
         </div>
-        <div className={postLocation}>
-          <p>{location}</p>
-          <p className={locationLabel}>Location</p>
-        </div>
+        <Location value={location}/>
       </div>
     </div>
   );
