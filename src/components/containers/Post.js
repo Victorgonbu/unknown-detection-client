@@ -11,6 +11,7 @@ import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
 import Favorite from '../presentationals/Favorite';
 import { connect } from 'react-redux';
+import { FAVORITE_POSTS } from '../../API';
 
 function Post (props) {
   const { authToken } = props;
@@ -37,6 +38,36 @@ function Post (props) {
 
     makeRequest();
   }, []);
+
+  const addPostToFavorites =  async () => {
+    try {
+      const data = { favorite: { post_id: postID } }
+      const request = await axios.post(`${FAVORITE_POSTS}`, data, 
+        { headers: { Authorization: `Bearer ${authToken}` }});
+      setPost((state) => ({...state, favorite: {id: request.data.data.id}}));
+      setFavorites((state) => state + 1);
+    }catch(error) {
+      console.log(error)
+    }
+  }
+
+  const removePostFromFavorites = async () => {
+    try {
+      const request = await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`, 
+        { headers: { Authorization: `Bearer ${authToken}` } });
+      console.log(request);
+      setPost((state) => ({...state, favorite: null}));
+      setFavorites((state) => state - 1);
+    }catch(error) {
+      console.log(error);
+    }
+  };
+
+  const handleFavoriteButton = async() => {
+    if(post.favorite) removePostFromFavorites();
+    else addPostToFavorites();
+  };
+
   return (
     <div className={container}>
       {post && author
@@ -62,7 +93,7 @@ function Post (props) {
           </div>
           <p className={descriptionText}>{post.description}</p>
         </div>
-        <button type="button" className={favoriteButton} >Add to favorites</button>
+        <button onClick={handleFavoriteButton} type="button" className={favoriteButton} >Add to favorites</button>
       </>
       }
     </div>

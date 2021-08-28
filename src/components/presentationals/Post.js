@@ -6,6 +6,7 @@ import Favorite from './Favorite';
 
 function Post (props) {
   const {imageUrl, title, location, favorite, id} = props;
+  console.log(favorite)
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/posts/${title}`, { state: {id} });
@@ -17,9 +18,9 @@ function Post (props) {
       <div onClick={handleNavigate} className={postInfo}>
         <div className={titleFavorite}>
           <p className={postTitle}>{title}</p>
-          {favorite 
+          {favorite
           &&
-          <Favorite withLabel inFavorites={favorite} />
+          <Favorite withLabel inFavorites={favorite.id} />
           }
         </div>
         <Location value={location}/>

@@ -1,6 +1,5 @@
 import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
 import { postFavorite, favoriteIcon, favoriteCounter, activeFavorite } from '../../style/Post.module.css';
-import { useEffect } from 'react';
 
 function Favorite (props) {
   const { withLabel, counter, inFavorites } = props;
