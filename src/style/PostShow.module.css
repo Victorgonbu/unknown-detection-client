@@ -66,4 +66,10 @@
 .favoriteButton {
   width: 100%;
   padding: 1em;
+  background-color: var(--orange);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  border: 1px solid var(--orange);
+  margin-top: 1em;
 }

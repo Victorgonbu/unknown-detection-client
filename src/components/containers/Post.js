@@ -24,10 +24,8 @@ function Post (props) {
   useEffect(() => {
     const makeRequest = async() => {
       try {
-        
         const request = await axios.get(`${POSTS}/${postID}`, { headers: 
           { Authorization: `Bearer ${authToken}` } });
-        console.log(request);
         setPost(request.data.data.attributes);
         setAuthor(request.data.included[0].attributes);
         setFavorites(request.data.data.relationships.favorites.data.length);
@@ -68,6 +66,11 @@ function Post (props) {
     else addPostToFavorites();
   };
 
+  const handleButtonText = ()  => {
+    if (post.favorite) return 'Remove from favorites';
+    else return 'Add to Favorites';
+  };
+
   return (
     <div className={container}>
       {post && author
@@ -93,7 +96,7 @@ function Post (props) {
           </div>
           <p className={descriptionText}>{post.description}</p>
         </div>
-        <button onClick={handleFavoriteButton} type="button" className={favoriteButton} >Add to favorites</button>
+        <button onClick={handleFavoriteButton} type="button" className={favoriteButton} >{handleButtonText()}</button>
       </>
       }
     </div>
