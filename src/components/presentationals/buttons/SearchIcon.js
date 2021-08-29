@@ -2,11 +2,27 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {navButton} from '../../../style/Navbar.module.css';
 
 function SearchIcon (props) {
-  const {handleClick} = props;
+  const {handleClick, active} = props;
   return(
-    <button className={navButton} type="button" onClick={handleClick}>
-      <FontAwesomeIcon icon="search"/>
-    </button>
+    <>
+      {active ?
+      <button 
+       type="button"
+       className={navButton}
+       onClick={handleClick}
+       >
+        &times;
+      </button>
+      :
+      <button 
+      type="button"
+      className={navButton} 
+      onClick={handleClick}>
+        <FontAwesomeIcon icon="search"/>
+      </button>
+      }
+    </>
+    
   );
 };
 

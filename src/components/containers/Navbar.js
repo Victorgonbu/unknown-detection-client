@@ -9,7 +9,7 @@ import SearchIcon from '../presentationals/buttons/SearchIcon';
 import {changeSearchState} from '../../actions/index';
 function Navbar (props) {
   const { toggleDropdown, currentPathName,
-    changeSearchState } = props;
+    changeSearchState, searchActive } = props;
   const location = useLocation();
   const currentPath = location.pathname.split('/');
 
@@ -22,7 +22,7 @@ function Navbar (props) {
       <div className={nav}>
       { currentPath.length < 3 ? <DropdownButton handleClick={handleDropdown}/> : <BackButton /> }
       <NavCurrentPath value={currentPathName}/>
-      <SearchIcon handleClick={changeSearchState} />
+      <SearchIcon active={searchActive} handleClick={changeSearchState} />
       </div>
     </>
   );
@@ -30,6 +30,7 @@ function Navbar (props) {
 
 const mapStateToProps = (state) => ({
   currentPathName: state.posts.currentPathName,
+  searchActive: state.posts.searchActive,
 });
 
 const mapDispatchToProps = (dispatch) => ({
