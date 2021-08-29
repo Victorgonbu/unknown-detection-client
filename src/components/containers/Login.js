@@ -4,7 +4,7 @@ import { TextField, FormControl, Input, InputLabel,
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
-import SubmitButton from '../presentationals/SubmitButton';
+import SubmitButton from '../presentationals/buttons/Submit';
 import { connect } from 'react-redux';
 import { authenticateUser } from '../../actions/index';
 import { LOGIN } from '../../API';

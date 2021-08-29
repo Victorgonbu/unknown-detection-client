@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { authenticateUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import SubmitButton from '../presentationals/SubmitButton';
+import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
 
 const styles = {
