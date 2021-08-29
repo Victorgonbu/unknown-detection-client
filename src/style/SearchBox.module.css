@@ -1,0 +1,16 @@
+.container {
+  composes: flexCentered from './App.module.css';
+  padding: .5em;
+  transition: 200ms ease-out;
+}
+
+.inputText {
+  padding: .5rem;
+  border: 1px solid var(--light-gray);
+}
+
+.searchButton {
+  composes: appButton from './Navbar.module.css';
+  box-shadow: 0 0 1px var(--light-black);
+  padding: .5rem;
+}

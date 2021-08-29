@@ -6,9 +6,10 @@ import BackButton from '../presentationals/buttons/Back';
 import DropdownButton from '../presentationals/buttons/Dropdown';
 import NavCurrentPath from '../presentationals/NavCurrentPath';
 import SearchIcon from '../presentationals/buttons/SearchIcon';
-
+import {changeSearchState} from '../../actions/index';
 function Navbar (props) {
-  const { toggleDropdown, currentPathName } = props;
+  const { toggleDropdown, currentPathName,
+    changeSearchState } = props;
   const location = useLocation();
   const currentPath = location.pathname.split('/');
 
@@ -21,7 +22,7 @@ function Navbar (props) {
       <div className={nav}>
       { currentPath.length < 3 ? <DropdownButton handleClick={handleDropdown}/> : <BackButton /> }
       <NavCurrentPath value={currentPathName}/>
-      <SearchIcon handleClick={} />
+      <SearchIcon handleClick={changeSearchState} />
       </div>
     </>
   );
@@ -33,6 +34,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleDropdown: () => {dispatch(toggleDropdown())},
+  changeSearchState: () => {dispatch(changeSearchState());},
 });
 
 

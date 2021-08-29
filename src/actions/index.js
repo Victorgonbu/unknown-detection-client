@@ -6,6 +6,7 @@ const LOG_OUT = 'SIGN_OUT';
 const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 const SET_POSTS = 'SET_POSTS';
 const SET_CURRENT_PATH_NAME = 'SET_CURRENT_PATH_NAME';
+const SET_SEARCH_STATE = 'SET_SEARCH_STATE';
 
 const logOut = () => ({
   type: LOG_OUT

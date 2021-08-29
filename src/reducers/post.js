@@ -6,8 +6,8 @@ function postReducer (state= { all: null, searchActive: false }, action) {
       return { ...state, all: payload };
     case 'SET_CURRENT_PATH_NAME': 
       return { ...state, currentPathName: payload};
-    case 'SET_SEARCH_BOX_STATE':
-      return {...state, searchActive: payload }
+    case 'SET_SEARCH_STATE':
+      return {...state, searchActive: !state.searchActive }
     default:
       return state;
   }

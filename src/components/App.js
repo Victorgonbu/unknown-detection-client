@@ -8,7 +8,8 @@ import useToggleEffect from '../hooks/useToggleEffect';
 import SearchBox from './containers/SearchBox';
 
 function App(props) {
-  const { dropdownActive } = props;
+  const { dropdownActive,
+  searchActive } = props;
   const appRef = useRef();
 
   useToggleEffect(appRef, active, [dropdownActive]);
@@ -18,7 +19,9 @@ function App(props) {
       <DropdownMenu />
       <div ref={appRef} className={appContainer}>
         <Navbar />
-        <SearchBox />
+        { searchActive
+        &&
+        <SearchBox /> }
         <Outlet/>
       </div>
     </div>
@@ -26,7 +29,8 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  dropdownActive: state.user.dropdown
+  dropdownActive: state.user.dropdown,
+  searchActive: state.posts.searchActive,
 });
 
 export default connect(mapStateToProps)(App);
