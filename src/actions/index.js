@@ -27,6 +27,10 @@ const setCurrentPathName = (name) => ({
   type: SET_CURRENT_PATH_NAME, payload: name
 });
 
+const changeSearchState = () => ({
+  type: SET_SEARCH_STATE
+});
+
 const authenticateUser = (data, url) => {
   return async (dispatch) => {
     try {
@@ -61,4 +65,5 @@ export {
   toggleDropdown,
   getPosts,
   setCurrentPathName,
+  changeSearchState
 }

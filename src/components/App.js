@@ -5,6 +5,7 @@ import { app, appContainer, active } from '../style/App.module.css';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
 import useToggleEffect from '../hooks/useToggleEffect';
+import SearchBox from './containers/SearchBox';
 
 function App(props) {
   const { dropdownActive } = props;
@@ -17,6 +18,7 @@ function App(props) {
       <DropdownMenu />
       <div ref={appRef} className={appContainer}>
         <Navbar />
+        <SearchBox />
         <Outlet/>
       </div>
     </div>

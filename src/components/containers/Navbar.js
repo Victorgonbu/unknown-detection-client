@@ -1,11 +1,11 @@
 import { nav } from '../../style/Navbar.module.css'
 import { connect } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toggleDropdown } from '../../actions/index';
 import { useLocation } from 'react-router-dom';
 import BackButton from '../presentationals/buttons/Back';
 import DropdownButton from '../presentationals/buttons/Dropdown';
 import NavCurrentPath from '../presentationals/NavCurrentPath';
+import SearchIcon from '../presentationals/buttons/SearchIcon';
 
 function Navbar (props) {
   const { toggleDropdown, currentPathName } = props;
@@ -21,7 +21,7 @@ function Navbar (props) {
       <div className={nav}>
       { currentPath.length < 3 ? <DropdownButton handleClick={handleDropdown}/> : <BackButton /> }
       <NavCurrentPath value={currentPathName}/>
-      <div><FontAwesomeIcon icon="search"/></div>
+      <SearchIcon handleClick={} />
       </div>
     </>
   );

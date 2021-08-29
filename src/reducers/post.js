@@ -1,4 +1,4 @@
-function postReducer (state= { all: null }, action) {
+function postReducer (state= { all: null, searchActive: false }, action) {
   const { payload, type } = action;
 
   switch(type) {
@@ -6,6 +6,8 @@ function postReducer (state= { all: null }, action) {
       return { ...state, all: payload };
     case 'SET_CURRENT_PATH_NAME': 
       return { ...state, currentPathName: payload};
+    case 'SET_SEARCH_BOX_STATE':
+      return {...state, searchActive: payload }
     default:
       return state;
   }
