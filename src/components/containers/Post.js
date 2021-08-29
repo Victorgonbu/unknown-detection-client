@@ -12,9 +12,10 @@ import UserAvatar from '../presentationals/UserAvatar';
 import Favorite from '../presentationals/Favorite';
 import { connect } from 'react-redux';
 import { FAVORITE_POSTS } from '../../API';
+import { setCurrentPathName } from '../../actions/index';
 
 function Post (props) {
-  const { authToken } = props;
+  const { authToken, setCurrentPathName } = props;
   const location = useLocation();
   const [post, setPost] = useState();
   const [author, setAuthor ] = useState();
@@ -26,6 +27,7 @@ function Post (props) {
       try {
         const request = await axios.get(`${POSTS}/${postID}`, { headers: 
           { Authorization: `Bearer ${authToken}` } });
+        setCurrentPathName(request.data.data.attributes.title);
         setPost(request.data.data.attributes);
         setAuthor(request.data.included[0].attributes);
         setFavorites(request.data.data.relationships.favorites.data.length);
@@ -35,6 +37,7 @@ function Post (props) {
     };
 
     makeRequest();
+    
   }, []);
 
   const addPostToFavorites =  async () => {
@@ -107,4 +110,8 @@ const mapStateToProps = (state) => ({
   authToken: state.user.token,
 });
 
-export default connect(mapStateToProps)(Post);
+const mapDispatchToProps  = (dispatch) => ({
+  setCurrentPathName: (name) => {dispatch(setCurrentPathName(name))},
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

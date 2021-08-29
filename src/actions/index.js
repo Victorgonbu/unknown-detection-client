@@ -5,6 +5,7 @@ const SET_USER = 'SET_USER';
 const LOG_OUT = 'SIGN_OUT';
 const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 const SET_POSTS = 'SET_POSTS';
+const SET_CURRENT_PATH_NAME = 'SET_CURRENT_PATH_NAME';
 
 const logOut = () => ({
   type: LOG_OUT
@@ -20,6 +21,10 @@ const toggleDropdown = () => ({
 
 const setPosts = (posts) => ({
   type: SET_POSTS, payload: posts
+});
+
+const setCurrentPathName = (name) => ({
+  type: SET_CURRENT_PATH_NAME, payload: name
 });
 
 const authenticateUser = (data, url) => {
@@ -54,5 +59,6 @@ export {
   authenticateUser,
   logOut,
   toggleDropdown,
-  getPosts
+  getPosts,
+  setCurrentPathName,
 }

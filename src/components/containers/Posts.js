@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/index';
+import { getPosts, setCurrentPathName } from '../../actions/index';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { container, carouselContainer, 
@@ -9,8 +9,8 @@ import Post from '../presentationals/Post';
 
 function Posts (props) {
   const { getPosts, allPosts, username,
-    favoriteOnly, } = props;
-    console.log(allPosts)
+    favoriteOnly, setCurrentPathName } = props;
+  
   const responsive = {
     mobile: {
       breakpoint : { max: 400, min: 0 },
@@ -19,8 +19,14 @@ function Posts (props) {
   };
 
   useEffect(() => {
-    if (favoriteOnly) getPosts('favorite');
-    else getPosts('all'); 
+    if (favoriteOnly) {
+      setCurrentPathName('Favorites');
+      getPosts('favorite');
+    }
+    else {
+      setCurrentPathName('Unknown Detections');
+      getPosts('all');
+    }; 
   },[username, favoriteOnly]);
 
   console.log(allPosts);
@@ -62,6 +68,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getPosts: (type) => {dispatch(getPosts(type));},
+  setCurrentPathName: (name) => {dispatch(setCurrentPathName(name));},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);
