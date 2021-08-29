@@ -106,7 +106,9 @@ function Post (props) {
           </div>
           <p className={descriptionText}>{post.description}</p>
         </div>
-        <button onClick={handleFavoriteButton} type="button" className={favoriteButton} >{handleButtonText()}</button>
+        {authToken && 
+          <button onClick={handleFavoriteButton} type="button" className={favoriteButton} >{handleButtonText()}</button>
+        }
       </>
       }
     </div>

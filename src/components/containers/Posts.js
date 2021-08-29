@@ -6,11 +6,12 @@ import 'react-multi-carousel/lib/styles.css';
 import { container, carouselContainer, 
   carouselItem, carouselDots } from '../../style/Post.module.css';
 import Post from '../presentationals/Post';
+import { useNavigate } from 'react-router-dom';
 
 function Posts (props) {
   const { getPosts, allPosts, username,
     favoriteOnly, setCurrentPathName } = props;
-  
+  const navigate = useNavigate();
   const responsive = {
     mobile: {
       breakpoint : { max: 400, min: 0 },
@@ -20,8 +21,11 @@ function Posts (props) {
 
   useEffect(() => {
     if (favoriteOnly) {
-      setCurrentPathName('Favorites');
-      getPosts('favorite');
+      if (!username) navigate('/login');
+      else {
+        setCurrentPathName('Favorites');
+        getPosts('favorite');
+      };
     }
     else {
       setCurrentPathName('Unknown Detections');
