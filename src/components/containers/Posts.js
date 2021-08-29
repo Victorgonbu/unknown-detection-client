@@ -46,6 +46,7 @@ function Posts (props) {
         draggable={true}
         showDots={true}
         focusOnSelect={true}
+        additionalTransfrom={10}
       >
         { allPosts.map((post) =>  (<Post 
                                       title={post.attributes.title}

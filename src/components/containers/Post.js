@@ -46,7 +46,6 @@ function Post (props) {
       const request = await axios.post(`${FAVORITE_POSTS}`, data, 
         { headers: { Authorization: `Bearer ${authToken}` }});
       setPost((state) => ({...state, favorite: {id: request.data.data.id}}));
-      setFavorites((state) => state + 1);
     }catch(error) {
       console.log(error)
     }
@@ -57,16 +56,24 @@ function Post (props) {
       const request = await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`, 
         { headers: { Authorization: `Bearer ${authToken}` } });
       console.log(request);
-      setPost((state) => ({...state, favorite: null}));
-      setFavorites((state) => state - 1);
+     
     }catch(error) {
       console.log(error);
     }
   };
 
   const handleFavoriteButton = async() => {
-    if(post.favorite) removePostFromFavorites();
-    else addPostToFavorites();
+    if(post.favorite) {
+      setPost((state) => ({...state, favorite: null}));
+      setFavorites((state) => state - 1);
+      removePostFromFavorites();
+      
+    } else {
+      setPost((state) => ({...state, favorite: {id: null}}));
+      setFavorites((state) => state + 1);
+      addPostToFavorites()
+      
+    };
   };
 
   const handleButtonText = ()  => {

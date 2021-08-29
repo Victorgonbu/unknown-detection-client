@@ -11,3 +11,13 @@
   background-color: var(--back-color);
   font-size: 1.2em;
 }
+
+
+
+.currentPathName {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--light-black);
+  text-align: center;
+  padding: 0 1em;
+}

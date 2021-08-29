@@ -60,15 +60,17 @@
 }
 
 .carouselContainer {
+  box-sizing: border-box;
   height: 100%;
+  align-items: flex-start;
+  padding-top: 2em;
 }
 
 .carouselItem {
-  box-sizing: border-box;
   flex: none;
-  border: 1px solid var(--light-gray);
-  max-width: calc(80vw - 3px);
-  margin-left: 1rem;
+  margin: 0 10px;
+  max-width: calc(80vw - 7px);
+  border: none;
   background-color: #fff;
   box-shadow: 0 7px 15px var(--light-gray);
   
@@ -76,5 +78,5 @@
 }
 
 .carouselDots {
-  bottom:5vh;
+  bottom:10vh;
 }

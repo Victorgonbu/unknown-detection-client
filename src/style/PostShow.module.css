@@ -45,6 +45,7 @@
 
 .description {
   padding: 1.5em 2em;
+  min-height: 43%;
 }
 
 .descriptionTop {
@@ -65,11 +66,11 @@
 
 .favoriteButton {
   width: 100%;
-  padding: 1em;
+  height: 7%;
+  max-height: 3em;
   background-color: var(--orange);
   color: #fff;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.1em;
+  font-size: 1rem;
   border: 1px solid var(--orange);
-  margin-top: 1em;
 }
