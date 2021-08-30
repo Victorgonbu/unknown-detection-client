@@ -6,7 +6,6 @@ import Favorite from './Favorite';
 
 function Post (props) {
   const {imageUrl, title, location, favorite, id} = props;
-  console.log(favorite)
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/posts/${title}`, { state: {id} });

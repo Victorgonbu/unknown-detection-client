@@ -1,30 +1,27 @@
-import { TextField, Input, FormControl, InputLabel } from '@material-ui/core'
-import { container, formContainer, field, button, title } from '../../style/Forms.module.css';
+import { TextField, OutlinedInput, FormControl, InputLabel } from '@material-ui/core'
+import { container, formContainer, title } from '../../style/Forms.module.css';
 import { useState, useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { authenticateUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
-
-const styles = {
-  formControl: {
-    marginTop: '1em',
-  }
-}
+import AuthErrors from '../presentationals/AuthErrors';
+import useStyles from '../../hooks/useStyles';
 
 function SignUp(props) {
   const [values, setValues] = useState({name: '', email: '', password: '', password_confirmation: ''});
-  const { classes, attemptSignUp, currentUser } = props;
+  const { attemptSignUp, currentUser } = props;
+  const classes = useStyles();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     if(currentUser) navigate('/posts');
   }, [currentUser]);
 
   const handleSubmit =() => {
-    attemptSignUp(values, SIGNUP);
+    attemptSignUp(values, SIGNUP, setErrors);
   };
 
   const handleChange = (e) => {
@@ -37,42 +34,46 @@ function SignUp(props) {
   return(
     <div className={container}>
       <h1 className={title}>Sign Up</h1>
+      <AuthErrors list={errors}/>
       <form className={formContainer}>
-        <div className={field}>
          <TextField 
+         variant="outlined"
          value={values.name}
          fullWidth 
          id="name" 
          label="Name"
          onChange={handleChange}
+         className={`${classes.root} ${classes.formControl}`}
          />
-        </div> 
-        <div className={field}>
-          <TextField
-          value={values.email}
-          fullWidth 
-          id="email" 
-          label="Email"
-          onChange={handleChange}
-          />
-        </div>
-        <FormControl fullWidth className={classes.formControl}>
+         <TextField
+         variant="outlined"
+         value={values.email}
+         fullWidth 
+         id="email" 
+         label="Email"
+         onChange={handleChange}
+         className={`${classes.root} ${classes.formControl}`}
+         />
+
+        <FormControl variant='outlined' className={`${classes.formControl} ${classes.root}`}>
           <InputLabel htmlFor="password">Password</InputLabel>
-          <Input 
+          <OutlinedInput 
             value={values.password}
             id="password"
             type="password"
             onChange={handleChange}
+            labelWidth={70}
           />
         </FormControl>
 
-        <FormControl fullWidth className={classes.formControl} >
+        <FormControl variant="outlined" className={`${classes.formControl} ${classes.root}`} >
           <InputLabel htmlFor="password_confirmation">Confirm Password</InputLabel>
-          <Input 
+          <OutlinedInput 
             value={values.password_confirmation}
             id="password_confirmation"
             type="password"
             onChange={handleChange}
+            labelWidth={140}
           />
         </FormControl>
 
@@ -88,7 +89,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  attemptSignUp: (data, url) => {dispatch(authenticateUser(data, url))}
+  attemptSignUp: (data, url, setErrors) => 
+  {dispatch(authenticateUser(data, url, setErrors))}
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignUp));
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

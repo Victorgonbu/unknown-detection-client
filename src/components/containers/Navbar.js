@@ -13,7 +13,7 @@ function Navbar (props) {
   const location = useLocation();
   const search = location.search;
   const currentPath = location.pathname.split('/');
-  console.log(currentPath)
+
   const handleDropdown = () => {
     toggleDropdown();
   };

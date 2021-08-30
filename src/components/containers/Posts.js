@@ -62,6 +62,7 @@ function Posts (props) {
         additionalTransfrom={10}
       >
         { allPosts.map((post) =>  (<Post 
+                                      key={post.id}
                                       title={post.attributes.title}
                                       imageUrl={post.attributes.image}
                                       description={post.attributes.description}

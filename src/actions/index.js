@@ -32,16 +32,15 @@ const changeSearchState = () => ({
   type: SET_SEARCH_STATE
 });
 
-const authenticateUser = (data, url) => {
+const authenticateUser = (data, url, setErrors) => {
   return async (dispatch) => {
     try {
       const userData = {user: data};
       const request = await axios.post(url, userData);
-      if(request.data.status === 400) throw request.data.errors
       dispatch(setUser(request.data))
 
     }catch(error) {
-      console.log(error);
+      setErrors(error.response.data.errors);
     }
     
   }
@@ -57,7 +56,7 @@ const getPosts = (type, query=null) => {
       const request = await axios.get(url, { headers: { Authorization: `Bearer ${authToken}` } });
       dispatch(setPosts(request.data.data));
     }catch(error) {
-      console.log(error.response.data);
+      console.log(error.response.data.errors);
     }
   }
 };

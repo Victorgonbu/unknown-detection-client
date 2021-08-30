@@ -1,15 +1,15 @@
 .container {
   composes: flexCentered from './App.module.css';
   flex-direction: column;
-  border: 1px solid red;
   min-height: 100vh;
 }
 
 .formContainer {
-  border: 1px solid green;
   width: 100%;
   padding: 0 1em;
   max-width: 400px;
+  composes: flexCentered from './App.module.css';
+  flex-direction: column;
 }
 
 .title {
@@ -17,14 +17,17 @@
   margin-bottom: 1em;
 }
 
-.field {
+.button {
   margin-top: 1em;
+  font-size: 1.1em;
+  padding: .7em 1.5em;
+  background-color: var(--orange);
+  color: #fff;
+  border: 1px solid var(--orange);
+  border-radius: 20px;
 }
 
-.button {
-  width: 100%;
-  padding: 1em;
-  background-color: #000;
-  color: #fff;
-
+.errors {
+  color: var(--orange);
+  text-align: center;
 }
