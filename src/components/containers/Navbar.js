@@ -11,8 +11,9 @@ function Navbar (props) {
   const { toggleDropdown, currentPathName,
     changeSearchState, searchActive } = props;
   const location = useLocation();
+  const search = location.search;
   const currentPath = location.pathname.split('/');
-
+  console.log(currentPath)
   const handleDropdown = () => {
     toggleDropdown();
   };
@@ -20,7 +21,7 @@ function Navbar (props) {
   return(
     <>
       <div className={nav}>
-      { currentPath.length < 3 ? <DropdownButton handleClick={handleDropdown}/> : <BackButton /> }
+      { currentPath.length > 2 || search  ? <BackButton /> : <DropdownButton handleClick={handleDropdown}/> }
       <NavCurrentPath value={currentPathName}/>
       <SearchIcon active={searchActive} handleClick={changeSearchState} />
       </div>

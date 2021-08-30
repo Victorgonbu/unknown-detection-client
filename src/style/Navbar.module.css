@@ -9,12 +9,15 @@
 .appButton {
   border: none;
   background-color: var(--back-color);
+  color: var(--light-black);
+  text-decoration: none;
 }
 
 .navButton {
   composes: appButton;
   font-size: 1.1em;
   width: 2em;
+  
 }
 
 

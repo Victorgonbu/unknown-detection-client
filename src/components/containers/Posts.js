@@ -6,12 +6,15 @@ import 'react-multi-carousel/lib/styles.css';
 import { container, carouselContainer, 
   carouselItem, carouselDots } from '../../style/Post.module.css';
 import Post from '../presentationals/Post';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Posts (props) {
   const { getPosts, allPosts, username,
     favoriteOnly, setCurrentPathName } = props;
   const navigate = useNavigate();
+  const location = useLocation();
+  const search = location.search;
+
   const responsive = {
     mobile: {
       breakpoint : { max: 400, min: 0 },
@@ -20,20 +23,26 @@ function Posts (props) {
   };
 
   useEffect(() => {
-    if (favoriteOnly) {
-      if (!username) navigate('/login');
+    if(!search) {
+      if (favoriteOnly) {
+        if (!username) navigate('/login');
+        else {
+          setCurrentPathName('Favorites');
+          getPosts('favorite');
+        };
+      }
       else {
-        setCurrentPathName('Favorites');
-        getPosts('favorite');
-      };
+        setCurrentPathName('Unknown Detections');
+        getPosts('all');
+      }; 
+    } else {
+      const query = search.split('?')[1];
+      setCurrentPathName(`"${query}"`);
+      getPosts('search', query);
     }
-    else {
-      setCurrentPathName('Unknown Detections');
-      getPosts('all');
-    }; 
-  },[username, favoriteOnly]);
+    
+  },[username, favoriteOnly, search]);
 
-  console.log(allPosts);
 
   return(
     <div className={container}>
@@ -72,7 +81,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: (type) => {dispatch(getPosts(type));},
+  getPosts: (type, query) => {dispatch(getPosts(type, query));},
   setCurrentPathName: (name) => {dispatch(setCurrentPathName(name));},
 });
 

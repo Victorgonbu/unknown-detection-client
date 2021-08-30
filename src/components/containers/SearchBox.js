@@ -1,15 +1,12 @@
 import {container, inputText, searchButton} from '../../style/SearchBox.module.css';
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 function SearchBox () {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState('');
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    
   };
 
   return(
@@ -21,14 +18,16 @@ function SearchBox () {
        onChange={handleInputChange}
        value={input}
        />
-      <button 
+      <Link
+      to={
+        {pathname: 'posts',
+        search: input
+      }
+      }
       className={searchButton}
-      onClick={handleSubmit}
-      >Search</button>
+      >Search</Link>
     </div>
   );
 };
-
-
 
 export default SearchBox;
