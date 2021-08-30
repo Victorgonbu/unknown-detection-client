@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { authenticateUser } from '../../actions/index';
 import { LOGIN } from '../../API';
 import { useNavigate } from 'react-router-dom';
-import AuthErrors from '../presentationals/AuthErrors';
+import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
 
 function Login(props) {
@@ -36,7 +36,7 @@ function Login(props) {
   return(
     <div className={container}>
       <h1 className={title}>Log In</h1>
-      <AuthErrors list={errors} />
+      <Errors list={errors} />
       <form className={formContainer}>
         
         <TextField 

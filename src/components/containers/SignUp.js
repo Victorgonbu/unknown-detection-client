@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
-import AuthErrors from '../presentationals/AuthErrors';
+import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
 
 function SignUp(props) {
@@ -34,7 +34,7 @@ function SignUp(props) {
   return(
     <div className={container}>
       <h1 className={title}>Sign Up</h1>
-      <AuthErrors list={errors}/>
+      <Errors list={errors}/>
       <form className={formContainer}>
          <TextField 
          variant="outlined"

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, setCurrentPathName } from '../../actions/index';
 import Carousel from 'react-multi-carousel';
@@ -7,6 +7,7 @@ import { container, carouselContainer,
   carouselItem, carouselDots } from '../../style/Post.module.css';
 import Post from '../presentationals/Post';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Errors from '../presentationals/Errors';
 
 function Posts (props) {
   const { getPosts, allPosts, username,
@@ -14,6 +15,7 @@ function Posts (props) {
   const navigate = useNavigate();
   const location = useLocation();
   const search = location.search;
+  const [errors, setErrors] = useState([]);
 
   const responsive = {
     mobile: {
@@ -28,24 +30,29 @@ function Posts (props) {
         if (!username) navigate('/login');
         else {
           setCurrentPathName('Favorites');
-          getPosts('favorite');
+          getPosts('favorite', setErrors);
         };
       }
       else {
         setCurrentPathName('Unknown Detections');
-        getPosts('all');
+        getPosts('all', setErrors);
       }; 
     } else {
-      const query = search.split('?')[1];
+      const query = search.split('?')[1].replaceAll('%20', ' ');
       setCurrentPathName(`"${query}"`);
-      getPosts('search', query);
+      getPosts('search', setErrors, query);
     }
+    return () => {
+      setErrors([]);
+    };
     
   },[username, favoriteOnly, search]);
 
 
   return(
     <div className={container}>
+      <Errors list={errors}/>
+      
       {allPosts 
       &&
       <Carousel 
@@ -72,6 +79,7 @@ function Posts (props) {
                                     />)) }
       </Carousel>
       }
+      
     </div>
   );
 };
@@ -82,7 +90,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: (type, query) => {dispatch(getPosts(type, query));},
+  getPosts: (type, query, setErrors) => {dispatch(getPosts(type, query, setErrors));},
   setCurrentPathName: (name) => {dispatch(setCurrentPathName(name));},
 });
 

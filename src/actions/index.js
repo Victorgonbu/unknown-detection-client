@@ -46,7 +46,7 @@ const authenticateUser = (data, url, setErrors) => {
   }
 };
 
-const getPosts = (type, query=null) => {
+const getPosts = (type, setError, query=null) => {
   return async (dispatch, getState) => {
     try {
       let url;
@@ -54,9 +54,17 @@ const getPosts = (type, query=null) => {
       else url = type === 'favorite' ? FAVORITE_POSTS : POSTS;
       const authToken = getState().user.token;
       const request = await axios.get(url, { headers: { Authorization: `Bearer ${authToken}` } });
-      dispatch(setPosts(request.data.data));
+      const response = request.data.data;
+      if (response.length === 0) setError(['No posts added yet']);
+      dispatch(setPosts(response));
     }catch(error) {
-      console.log(error.response.data.errors);
+      console.log(error)
+      dispatch(setPosts([]))
+      if(error.response.status === 500){
+        setError(['Unable to fetch from API, please try again in 20 seconds']);
+      }else if (error.response.status === 404){
+        setError(error.response.data.errors);
+      }
     }
   }
 };

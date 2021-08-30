@@ -30,4 +30,5 @@
 .errors {
   color: var(--orange);
   text-align: center;
+  padding-top: 1rem;
 }

@@ -61,7 +61,7 @@
 
 .carouselContainer {
   box-sizing: border-box;
-  height: 100%;
+  height:calc(100% - 2rem);
   align-items: flex-start;
   padding-top: 2em;
 }
