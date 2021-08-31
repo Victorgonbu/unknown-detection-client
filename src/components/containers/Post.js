@@ -14,6 +14,7 @@ import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
 import Favorite from '../presentationals/Favorite';
 import { setCurrentPathName } from '../../actions/index';
+import PropTypes from 'prop-types';
 
 function Post(props) {
   const { authToken, setCurrentPathName } = props;
@@ -112,6 +113,15 @@ function Post(props) {
     </div>
   );
 }
+
+Post.propTypes = {
+  authToken: PropTypes.string,
+  setCurrentPathName: PropTypes.func.isRequired,
+};
+
+Post.defaultProps = {
+  authToken: null,
+};
 
 const mapStateToProps = (state) => ({
   authToken: state.user.token,

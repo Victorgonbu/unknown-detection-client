@@ -87,6 +87,18 @@ function Posts(props) {
   );
 }
 
+Posts.propTypes = {
+  allPost: PropTypes.arrayOf(PropTypes.object),
+  username: PropTypes.string,
+  getPosts: PropTypes.func.isRequired,
+  getCurrentPathName: PropTypes.func.isRequired,
+};
+
+Posts.defaultProps = {
+  allPosts: null,
+  username: null,
+};
+
 const mapStateToProps = (state) => ({
   allPosts: state.posts.all,
   username: state.user.name,
