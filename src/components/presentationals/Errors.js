@@ -4,7 +4,7 @@ import { errors } from '../../style/Forms.module.css';
 function Errors(props) {
   const { list } = props;
   return (
-    <ul className={errors}>
+    <ul data-testid="errors" className={errors}>
       {list.map((error) => <li key={error}>{error}</li>)}
     </ul>
   );

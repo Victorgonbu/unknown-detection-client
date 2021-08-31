@@ -1,8 +1,6 @@
 import React from 'react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 import {
-  render, fireEvent, waitFor, screen, reduxStore,
+  render,
 } from '../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import DropdownMenu from '../../components/containers/DropdownMenu';

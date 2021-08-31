@@ -33,6 +33,7 @@ function Login(props) {
   };
 
   const handleSubmit = () => {
+    
     attemptLogin(values, LOGIN, setErrors);
   };
 
@@ -71,7 +72,7 @@ function Login(props) {
           />
         </FormControl>
 
-        <SubmitButton text="Login" handleSubmit={handleSubmit} />
+        <SubmitButton  text="Login" handleSubmit={handleSubmit} />
       </form>
     </div>
   );
