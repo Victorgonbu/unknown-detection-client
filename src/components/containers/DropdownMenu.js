@@ -1,6 +1,7 @@
 import { NavLink as Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
+import PropTypes from 'prop-types';
 import {
   container, active, footer, top, links,
   link, activeLink,
@@ -10,7 +11,6 @@ import { toggleDropdown, logOut } from '../../actions';
 import AuthLinks from '../presentationals/AuthLinks';
 import UserLinks from '../presentationals/UserLinks';
 import FooterLinks from '../presentationals/FooterLinks';
-import PropTypes from 'prop-types';
 
 const DropdownMenu = (props) => {
   const {
@@ -53,6 +53,8 @@ DropdownMenu.propTypes = {
   dropdownActive: PropTypes.bool.isRequired,
   username: PropTypes.string,
   email: PropTypes.string,
+  toggleDropdown: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
 };
 
 DropdownMenu.defaultProps = {

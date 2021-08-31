@@ -6,13 +6,13 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import SubmitButton from '../presentationals/buttons/Submit';
 import { authenticateUser } from '../../actions/index';
 import { LOGIN } from '../../API';
 import { title, container, formContainer } from '../../style/Forms.module.css';
 import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
-import PropTypes from 'prop-types';
 
 function Login(props) {
   const { attemptLogin, username } = props;

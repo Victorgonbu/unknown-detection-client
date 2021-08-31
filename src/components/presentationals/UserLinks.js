@@ -1,10 +1,10 @@
 import { NavLink as Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   links, activeLink, link, userInfo,
   userName, userEmail,
 } from '../../style/Dropdown.module.css';
 import UserAvatar from './UserAvatar';
-import PropTypes from 'prop-types';
 
 function UserLinks(props) {
   const { name, email, handleToggle } = props;
@@ -21,8 +21,8 @@ function UserLinks(props) {
       </div>
       <Link onClick={handleToggle} to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
       <Link onClick={handleToggle} to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
-      <a className={link}>Notifications</a>
-      <a className={link}>Messages</a>
+      <div className={link}>Notifications</div>
+      <div className={link}>Messages</div>
     </div>
   );
 }
@@ -31,6 +31,6 @@ UserLinks.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   handleToggle: PropTypes.func.isRequired,
-}
+};
 
 export default UserLinks;

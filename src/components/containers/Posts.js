@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Carousel from 'react-multi-carousel';
-import { getPosts, setCurrentPathName } from '../../actions/index';
 import 'react-multi-carousel/lib/styles.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   container, carouselContainer,
   carouselItem, carouselDots,
 } from '../../style/Post.module.css';
 import Post from '../presentationals/Post';
-import { useNavigate, useLocation } from 'react-router-dom';
 import Errors from '../presentationals/Errors';
+import { getPosts, setCurrentPathName } from '../../actions/index';
 
 function Posts(props) {
   const {
@@ -88,15 +89,17 @@ function Posts(props) {
 }
 
 Posts.propTypes = {
-  allPost: PropTypes.arrayOf(PropTypes.object),
+  allPosts: PropTypes.arrayOf(PropTypes.object),
   username: PropTypes.string,
   getPosts: PropTypes.func.isRequired,
-  getCurrentPathName: PropTypes.func.isRequired,
+  setCurrentPathName: PropTypes.func.isRequired,
+  favoriteOnly: PropTypes.bool,
 };
 
 Posts.defaultProps = {
   allPosts: null,
   username: null,
+  favoriteOnly: false,
 };
 
 const mapStateToProps = (state) => ({

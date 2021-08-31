@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { nav } from '../../style/Navbar.module.css';
 import { toggleDropdown, changeSearchState } from '../../actions/index';
 import BackButton from '../presentationals/buttons/Back';
 import DropdownButton from '../presentationals/buttons/Dropdown';
 import NavCurrentPath from '../presentationals/NavCurrentPath';
 import SearchIcon from '../presentationals/buttons/SearchIcon';
-import PropTypes from 'prop-types';
 
 function Navbar(props) {
   const {
@@ -24,20 +24,21 @@ function Navbar(props) {
   return (
     <>
       <div className={nav}>
-        { currentPath.length > 2 || search ? <BackButton /> : <DropdownButton handleClick={handleDropdown} /> }
+        { currentPath.length > 2 || search
+          ? <BackButton /> : <DropdownButton handleClick={handleDropdown} /> }
         <NavCurrentPath value={currentPathName} />
         <SearchIcon active={searchActive} handleClick={changeSearchState} />
       </div>
     </>
   );
-};
+}
 
 Navbar.propTypes = {
   currentPathName: PropTypes.string.isRequired,
   searchActive: PropTypes.bool.isRequired,
   toggleDropdown: PropTypes.func.isRequired,
   changeSearchState: PropTypes.func.isRequired,
-}
+};
 
 const mapStateToProps = (state) => ({
   currentPathName: state.posts.currentPathName,

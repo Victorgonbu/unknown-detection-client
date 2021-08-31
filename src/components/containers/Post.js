@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { POSTS, FAVORITE_POSTS } from '../../API';
 import {
   backdropContainer, fullSize,
@@ -14,7 +15,7 @@ import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
 import Favorite from '../presentationals/Favorite';
 import { setCurrentPathName } from '../../actions/index';
-import PropTypes from 'prop-types';
+import Errors from '../presentationals/Errors';
 
 function Post(props) {
   const { authToken, setCurrentPathName } = props;
@@ -23,6 +24,7 @@ function Post(props) {
   const [author, setAuthor] = useState();
   const [favorites, setFavorites] = useState();
   const postID = location.state.id;
+  const [errors, setErrors] = useState(null);
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -35,8 +37,8 @@ function Post(props) {
         setPost(request.data.data.attributes);
         setAuthor(request.data.included[0].attributes);
         setFavorites(request.data.data.relationships.favorites.data.length);
-      } catch (error) {
-        console.log(error);
+      } catch {
+        setErrors(['Unable to fetch Post']);
       }
     };
 
@@ -49,18 +51,21 @@ function Post(props) {
       const request = await axios.post(`${FAVORITE_POSTS}`, data,
         { headers: { Authorization: `Bearer ${authToken}` } });
       setPost((state) => ({ ...state, favorite: { id: request.data.data.id } }));
-    } catch (error) {
-      console.log(error);
+    } catch {
+      setErrors(['Unable to Add post to favorites']);
+      setPost((state) => ({ ...state, favorite: null }));
+      setFavorites((state) => state - 1);
     }
   };
 
   const removePostFromFavorites = async () => {
     try {
-      const request = await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`,
+      await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`,
         { headers: { Authorization: `Bearer ${authToken}` } });
-      console.log(request);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      setErrors(['Unable to remove post from favorites']);
+      setPost((state) => ({ ...state, favorite: { id: null } }));
+      setFavorites((state) => state + 1);
     }
   };
 
@@ -83,11 +88,12 @@ function Post(props) {
 
   return (
     <div className={container}>
+      <Errors list={errors} />
       {post && author
       && (
       <>
         <div className={backdropContainer}>
-          <img className={fullSize} src={post.image} />
+          <img alt="Post backdrop" className={fullSize} src={post.image} />
           <div className={absoluteLabel}>
             <div className={authorDetails}>
               <UserAvatar />

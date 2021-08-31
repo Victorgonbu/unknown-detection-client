@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { title, authLink, authLinks } from '../../style/Dropdown.module.css';
 import PropTypes from 'prop-types';
+import { title, authLink, authLinks } from '../../style/Dropdown.module.css';
 
 function AuthLinks(props) {
   const { handleLink } = props;

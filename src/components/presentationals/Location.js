@@ -1,5 +1,5 @@
-import { postLocation, locationLabel } from '../../style/Post.module.css';
 import PropTypes from 'prop-types';
+import { postLocation, locationLabel } from '../../style/Post.module.css';
 
 function Location(props) {
   const { value } = props;

@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router, useRoutes, useNavigate, useLocation,
+  useRoutes, useNavigate, useLocation,
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import App from './App';

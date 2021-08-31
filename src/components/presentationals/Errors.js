@@ -1,5 +1,5 @@
-import { errors } from '../../style/Forms.module.css';
 import PropTypes from 'prop-types';
+import { errors } from '../../style/Forms.module.css';
 
 function Errors(props) {
   const { list } = props;
@@ -14,7 +14,7 @@ Errors.propTypes = {
   list: PropTypes.arrayOf(PropTypes.string),
 };
 
-Error.defaultProps = {
+Errors.defaultProps = {
   list: [],
 };
 

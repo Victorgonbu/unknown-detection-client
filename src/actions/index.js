@@ -53,7 +53,6 @@ const getPosts = (type, setError, query = null) => async (dispatch, getState) =>
     if (response.length === 0) setError(['No posts added yet']);
     dispatch(setPosts(response));
   } catch (error) {
-    console.log(error);
     dispatch(setPosts([]));
     if (error.response.status === 500) {
       setError(['Unable to fetch from API, please try again in 20 seconds']);

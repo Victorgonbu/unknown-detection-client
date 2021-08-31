@@ -1,5 +1,5 @@
-import { currentPathName } from '../../style/Navbar.module.css';
 import PropTypes from 'prop-types';
+import { currentPathName } from '../../style/Navbar.module.css';
 
 function NavCurrentPath(props) {
   const { value } = props;
@@ -13,6 +13,6 @@ function NavCurrentPath(props) {
 
 NavCurrentPath.propTypes = {
   value: PropTypes.string.isRequired,
-}
+};
 
 export default NavCurrentPath;

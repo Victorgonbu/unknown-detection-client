@@ -1,5 +1,5 @@
-import { button, submitField } from '../../../style/Forms.module.css';
 import PropTypes from 'prop-types';
+import { button, submitField } from '../../../style/Forms.module.css';
 
 function SubmitButton(props) {
   const { handleSubmit, text } = props;
@@ -13,6 +13,6 @@ function SubmitButton(props) {
 SubmitButton.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-}
+};
 
 export default SubmitButton;

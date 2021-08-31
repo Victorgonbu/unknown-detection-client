@@ -4,14 +4,13 @@ import {
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { authenticateUser } from '../../actions/index';
 import { container, formContainer, title } from '../../style/Forms.module.css';
 import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
 import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
-import PropTypes from 'prop-types';
-
 
 function SignUp(props) {
   const [values, setValues] = useState({

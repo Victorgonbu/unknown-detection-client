@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   post, postTitle, postImage,
   postInfo, titleFavorite,
 } from '../../style/Post.module.css';
 import Location from './Location';
 import Favorite from './Favorite';
-import PropTypes from 'prop-types';
 
 function Post(props) {
   const {
@@ -18,15 +18,15 @@ function Post(props) {
 
   return (
     <div className={post}>
-      <img className={postImage} src={imageUrl} />
-      <div onClick={handleNavigate} className={postInfo}>
+      <img alt="Post poster" className={postImage} src={imageUrl} />
+      <button type="button" onClick={handleNavigate} className={postInfo}>
         <div className={titleFavorite}>
           <p className={postTitle}>{title}</p>
           {favorite
           && <Favorite withLabel inFavorites={favorite.id} />}
         </div>
         <Location value={location} />
-      </div>
+      </button>
     </div>
   );
 }
@@ -37,9 +37,13 @@ Post.propTypes = {
   location: PropTypes.string.isRequired,
   favorite: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.object
+    PropTypes.object,
   ])),
   id: PropTypes.string.isRequired,
-}
+};
+
+Post.defaultProps = {
+  favorite: null,
+};
 
 export default Post;

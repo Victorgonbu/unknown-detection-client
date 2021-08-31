@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import {
   postFavorite, favoriteIcon, favoriteCounter, activeFavorite,
 } from '../../style/Post.module.css';
-import PropTypes from 'prop-types';
 
 function Favorite(props) {
   const { withLabel, counter, inFavorites } = props;
@@ -38,6 +38,6 @@ Favorite.propTypes = {
 
 Favorite.defaultProps = {
   counter: null,
-}
+};
 
 export default Favorite;
