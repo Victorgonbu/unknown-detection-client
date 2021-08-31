@@ -1,12 +1,12 @@
-import {errors } from '../../style/Forms.module.css';
+import { errors } from '../../style/Forms.module.css';
 
-function Errors (props) {
-  const {list} = props
-  return(
+function Errors(props) {
+  const { list } = props;
+  return (
     <ul className={errors}>
       {list.map((error) => <li key={error}>{error}</li>)}
-    </ul> 
+    </ul>
   );
-};
+}
 
 export default Errors;

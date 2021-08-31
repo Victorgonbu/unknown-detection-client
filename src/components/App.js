@@ -1,15 +1,17 @@
-import Navbar from './containers/Navbar';
 import { Outlet } from 'react-router-dom';
-import DropdownMenu from './containers/DropdownMenu';
-import { app, appContainer, active } from '../style/App.module.css';
 import { connect } from 'react-redux';
 import { useRef } from 'react';
+import Navbar from './containers/Navbar';
+import DropdownMenu from './containers/DropdownMenu';
+import { app, appContainer, active } from '../style/App.module.css';
 import useToggleEffect from '../hooks/useToggleEffect';
 import SearchBox from './containers/SearchBox';
 
 function App(props) {
-  const { dropdownActive,
-  searchActive } = props;
+  const {
+    dropdownActive,
+    searchActive,
+  } = props;
   const appRef = useRef();
 
   useToggleEffect(appRef, active, [dropdownActive]);
@@ -20,9 +22,8 @@ function App(props) {
       <div ref={appRef} className={appContainer}>
         <Navbar />
         { searchActive
-        &&
-        <SearchBox /> }
-        <Outlet/>
+        && <SearchBox /> }
+        <Outlet />
       </div>
     </div>
   );

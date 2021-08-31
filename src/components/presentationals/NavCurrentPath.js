@@ -1,13 +1,13 @@
 import { currentPathName } from '../../style/Navbar.module.css';
 
-function NavCurrentPath (props) {
-  const {value} = props;
+function NavCurrentPath(props) {
+  const { value } = props;
 
-  return(
+  return (
     <div className={currentPathName}>
       {value}
     </div>
   );
-};
+}
 
 export default NavCurrentPath;

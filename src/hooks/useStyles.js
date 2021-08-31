@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
       '&.Mui-focused fieldset': {
         borderColor: '#ff6026',
       },
-    }  
+    },
   },
   formControl: {
     marginTop: '1em',
