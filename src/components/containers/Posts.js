@@ -27,6 +27,14 @@ function Posts(props) {
       breakpoint: { max: 400, min: 0 },
       items: 1.2,
     },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
   };
 
   useEffect(() => {
@@ -60,7 +68,7 @@ function Posts(props) {
       <Carousel
         responsive={responsive}
         deviceType="mobile"
-        removeArrowOnDeviceType={['tablet', 'mobile']}
+        removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
         itemClass={carouselItem}
         containerClass={carouselContainer}
         dotListClass={carouselDots}
