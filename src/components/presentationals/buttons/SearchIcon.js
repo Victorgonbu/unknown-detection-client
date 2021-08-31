@@ -18,6 +18,7 @@ function SearchIcon(props) {
         )
         : (
           <button
+            data-testid="search-icon"
             type="button"
             className={navButton}
             onClick={handleClick}

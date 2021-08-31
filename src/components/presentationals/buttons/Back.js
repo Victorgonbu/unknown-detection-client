@@ -6,7 +6,7 @@ function BackButton() {
   const navigate = useNavigate();
 
   return (
-    <button type="button" className={navButton} onClick={() => navigate(-1)}>
+    <button data-testid="back-button" type="button" className={navButton} onClick={() => navigate(-1)}>
       <FontAwesomeIcon icon="arrow-left" />
     </button>
   );

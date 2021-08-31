@@ -2,14 +2,14 @@ import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
-  render, fireEvent, waitFor, screen, reduxStore,
+  render, fireEvent, waitFor, reduxStore,
 } from '../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import Login from '../../components/containers/Login';
 
 const mockNavigate = jest.fn();
 /* eslint-disable react/display-name */
-jest.mock('@material-ui/core',() => ({
+jest.mock('@material-ui/core', () => ({
   ...jest.requireActual('@material-ui/core'),
   TextField: () => <input data-testid="text-field" />,
   FormControl: () => <div data-testid="form-control" />,
@@ -23,8 +23,8 @@ jest.mock('react-router-dom', () => ({
 const requestResponse = {
   name: 'victor',
   email: 'victor@victor.com',
-  token: 'afela234'
-}
+  token: 'afela234',
+};
 
 const server = setupServer(
   rest.post('http://localhost/api/v1/auth', (req, res, ctx) => res(ctx.json(
@@ -36,14 +36,12 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-
 describe('Login', () => {
-
   const initialState = {
     user: {
       name: null,
-    }
-  }
+    },
+  };
 
   it('render title with form fields and errors components', () => {
     const { getByText, getByTestId } = render(<Login />, initialState);
@@ -55,22 +53,22 @@ describe('Login', () => {
 
   describe('Attempt to log in', () => {
     it('dispatch async action to redux store', async () => {
-      const {getByTestId} = render(<Login />, initialState)
+      const { getByTestId } = render(<Login />, initialState);
       const submit = getByTestId('button');
       fireEvent.click(submit);
       const actions = reduxStore.getActions();
       await waitFor(() => expect(actions.length).toBe(1));
-      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse});
+      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse });
     });
 
     it('render error list if invalid credentials', async () => {
       server.use(rest.post('http://localhost/api/v1/auth', (req, res, ctx) => res(
         ctx.status(404),
         ctx.json({
-          errors: ['invalid credentials']
-        }),  
+          errors: ['invalid credentials'],
+        }),
       )));
-      const {getByTestId, getByText} = render(<Login />, initialState);
+      const { getByTestId, getByText } = render(<Login />, initialState);
       const submit = getByTestId('button');
       fireEvent.click(submit);
       await waitFor(() => expect(getByText('invalid credentials')).toBeInTheDocument());
@@ -82,7 +80,6 @@ describe('Login', () => {
       render(<Login />, initialState);
       await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1));
       expect(mockNavigate).toHaveBeenCalledWith('/posts');
-
     });
   });
 });

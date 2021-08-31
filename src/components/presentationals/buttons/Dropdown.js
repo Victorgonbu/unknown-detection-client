@@ -5,7 +5,7 @@ import { navButton } from '../../../style/Navbar.module.css';
 function DropdownButton(props) {
   const { handleClick } = props;
   return (
-    <button type="button" className={navButton} onClick={handleClick}>
+    <button data-testid="dropdown-button" type="button" className={navButton} onClick={handleClick}>
       <FontAwesomeIcon icon="bars" />
     </button>
   );
