@@ -5,12 +5,12 @@
 }
 
 .inputText {
-  padding: .5rem;
+  padding: 10px;
   border: 1px solid var(--light-gray);
 }
 
 .searchButton {
   composes: appButton from './Navbar.module.css';
-  box-shadow: 0 0 1px var(--light-black);
-  padding: .5rem;
+  border: 1px solid var(--light-gray);
+  padding: 9.5px;
 }

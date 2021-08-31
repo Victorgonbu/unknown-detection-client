@@ -17,6 +17,7 @@ const DropdownMenu = (props) => {
     dropdownActive, toggleDropdown,
     username, email, logOut,
   } = props;
+
   const dropdownRef = useRef();
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ const DropdownMenu = (props) => {
   };
 
   return (
-    <div ref={dropdownRef} className={container}>
+    <div ref={dropdownRef} data-testid="dropdown" className={container}>
       <div className={top}>
         {username ? <UserLinks handleToggle={toggleDropdown} name={username} email={email} />
           : (
