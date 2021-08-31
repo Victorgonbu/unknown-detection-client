@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   postFavorite, favoriteIcon, favoriteCounter, activeFavorite,
 } from '../../style/Post.module.css';
+import PropTypes from 'prop-types';
 
 function Favorite(props) {
   const { withLabel, counter, inFavorites } = props;
@@ -27,6 +28,16 @@ function Favorite(props) {
 
     </div>
   );
+}
+
+Favorite.propTypes = {
+  withLabel: PropTypes.bool.isRequired,
+  counter: PropTypes.number,
+  inFavorites: PropTypes.bool.isRequired,
+};
+
+Favorite.defaultProps = {
+  counter: null,
 }
 
 export default Favorite;
