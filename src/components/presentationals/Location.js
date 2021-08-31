@@ -1,4 +1,5 @@
 import { postLocation, locationLabel } from '../../style/Post.module.css';
+import PropTypes from 'prop-types';
 
 function Location(props) {
   const { value } = props;
@@ -9,5 +10,9 @@ function Location(props) {
     </div>
   );
 }
+
+Location.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 export default Location;

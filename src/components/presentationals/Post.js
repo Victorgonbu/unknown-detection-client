@@ -5,6 +5,7 @@ import {
 } from '../../style/Post.module.css';
 import Location from './Location';
 import Favorite from './Favorite';
+import PropTypes from 'prop-types';
 
 function Post(props) {
   const {
@@ -28,6 +29,17 @@ function Post(props) {
       </div>
     </div>
   );
+}
+
+Post.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  favorite: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ])),
+  id: PropTypes.string.isRequired,
 }
 
 export default Post;

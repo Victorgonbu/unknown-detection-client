@@ -1,4 +1,5 @@
 import { footLink } from '../../style/Dropdown.module.css';
+import PropTypes from 'prop-types';
 
 function FooterLinks(props) {
   const { handleLogOut } = props;
@@ -10,5 +11,9 @@ function FooterLinks(props) {
     </div>
   );
 }
+
+FooterLinks.propTypes = {
+  handleLogOut: PropTypes.func.isRequired,
+};
 
 export default FooterLinks;
