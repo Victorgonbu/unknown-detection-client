@@ -34,10 +34,14 @@ function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  currentPathName: PropTypes.string.isRequired,
+  currentPathName: PropTypes.string,
   searchActive: PropTypes.bool.isRequired,
   toggleDropdown: PropTypes.func.isRequired,
   changeSearchState: PropTypes.func.isRequired,
+};
+
+Navbar.defaultProps = {
+  currentPathName: '',
 };
 
 const mapStateToProps = (state) => ({

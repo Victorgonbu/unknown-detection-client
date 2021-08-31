@@ -45,7 +45,7 @@
 
 .description {
   padding: 1.5em 2em;
-  min-height: 43%;
+  min-height: calc(43% - 2rem);
 }
 
 .descriptionTop {

@@ -2,16 +2,19 @@
   height: 91vh;
 }
 
-.post {
-  color: var(--light-black);
-  text-decoration: none;
-}
-
 .postInfo {
+  background-color: #fff;
+  border: none;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 1em;
+  min-height: 6em;
+  width: 100%;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  color: var(--light-black);
+  font-weight: 500;
+  font-size: .9em;
 }
 
 .titleFavorite {
@@ -74,7 +77,6 @@
   background-color: #fff;
   box-shadow: 0 7px 15px var(--light-gray);
   
-  font-weight: 500;
 }
 
 .carouselDots {

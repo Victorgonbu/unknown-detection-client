@@ -31,13 +31,14 @@ function Favorite(props) {
 }
 
 Favorite.propTypes = {
-  withLabel: PropTypes.bool.isRequired,
+  withLabel: PropTypes.bool,
   counter: PropTypes.number,
-  inFavorites: PropTypes.bool.isRequired,
+  inFavorites: PropTypes.oneOfType([PropTypes.object, PropTypes.number]).isRequired,
 };
 
 Favorite.defaultProps = {
   counter: null,
+  withLabel: false,
 };
 
 export default Favorite;

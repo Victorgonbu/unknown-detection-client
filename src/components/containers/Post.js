@@ -24,7 +24,7 @@ function Post(props) {
   const [author, setAuthor] = useState();
   const [favorites, setFavorites] = useState();
   const postID = location.state.id;
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     const makeRequest = async () => {

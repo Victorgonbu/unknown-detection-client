@@ -38,6 +38,7 @@ Post.propTypes = {
   favorite: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.object,
+    PropTypes.string,
   ])),
   id: PropTypes.string.isRequired,
 };
