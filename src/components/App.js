@@ -6,6 +6,7 @@ import DropdownMenu from './containers/DropdownMenu';
 import { app, appContainer, active } from '../style/App.module.css';
 import useToggleEffect from '../hooks/useToggleEffect';
 import SearchBox from './containers/SearchBox';
+import PropTypes from 'prop-types';
 
 function App(props) {
   const {
@@ -27,6 +28,11 @@ function App(props) {
       </div>
     </div>
   );
+}
+
+App.propTypes = {
+  dropdownActive: PropTypes.bool.isRequired,
+  searchActive: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state) => ({

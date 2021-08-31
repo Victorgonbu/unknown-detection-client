@@ -4,6 +4,7 @@ import {
   userName, userEmail,
 } from '../../style/Dropdown.module.css';
 import UserAvatar from './UserAvatar';
+import PropTypes from 'prop-types';
 
 function UserLinks(props) {
   const { name, email, handleToggle } = props;
@@ -24,6 +25,12 @@ function UserLinks(props) {
       <a className={link}>Messages</a>
     </div>
   );
+}
+
+UserLinks.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  handleToggle: PropTypes.func.isRequired,
 }
 
 export default UserLinks;
