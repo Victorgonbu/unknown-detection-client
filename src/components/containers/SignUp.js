@@ -10,6 +10,8 @@ import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
 import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
+import PropTypes from 'prop-types';
+
 
 function SignUp(props) {
   const [values, setValues] = useState({
@@ -84,6 +86,15 @@ function SignUp(props) {
     </div>
   );
 }
+
+SignUp.propTypes = {
+  currentUser: PropTypes.string,
+  attemptSignUp: PropTypes.func.isRequired,
+};
+
+SignUp.defaultProps = {
+  currentUser: null,
+};
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.name,
