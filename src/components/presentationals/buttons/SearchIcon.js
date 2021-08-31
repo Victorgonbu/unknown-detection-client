@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { navButton } from '../../../style/Navbar.module.css';
+import PropTypes from 'prop-types';
 
 function SearchIcon(props) {
   const { handleClick, active } = props;
@@ -27,6 +28,11 @@ function SearchIcon(props) {
     </>
 
   );
+}
+
+SearchIcon.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
 }
 
 export default SearchIcon;

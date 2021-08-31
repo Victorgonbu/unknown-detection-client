@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { navButton } from '../../../style/Navbar.module.css';
+import PropTypes from 'prop-types';
 
 function DropdownButton(props) {
   const { handleClick } = props;
@@ -9,5 +10,9 @@ function DropdownButton(props) {
     </div>
   );
 }
+
+DropdownButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default DropdownButton;
