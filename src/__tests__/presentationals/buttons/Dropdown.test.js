@@ -1,10 +1,11 @@
 import React from 'react';
 import {
   render, fireEvent, screen,
-} from '../../../utils/test-utils.js';
+} from '../../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import DropdownButton from '../../../components/presentationals/buttons/Dropdown';
 
+/* eslint-disable react/display-name */
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),
   FontAwesomeIcon: () => <div data-testid="icon" />,

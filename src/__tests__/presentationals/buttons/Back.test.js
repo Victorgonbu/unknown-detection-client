@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   render, fireEvent, screen,
-} from '../../../utils/test-utils.js';
+} from '../../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import BackButton from '../../../components/presentationals/buttons/Back';
 
 const mockNavigate = jest.fn();
 
+/* eslint-disable react/display-name */
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockNavigate,

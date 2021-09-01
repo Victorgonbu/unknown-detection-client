@@ -9,7 +9,7 @@ const mockHandleClick = jest.fn();
 
 describe('Submit', () => {
   beforeEach(() => {
-    render(<SubmitButton text='login' handleSubmit={mockHandleClick} />)
+    render(<SubmitButton text="login" handleSubmit={mockHandleClick} />);
   });
   it('render button and with text passed in props', () => {
     const button = screen.getByTestId('button');
@@ -20,6 +20,5 @@ describe('Submit', () => {
     const button = screen.getByTestId('button');
     fireEvent.click(button);
     expect(mockHandleClick).toHaveBeenCalledTimes(1);
-    
   });
 });

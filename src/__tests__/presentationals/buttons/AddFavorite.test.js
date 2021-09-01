@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   render, fireEvent, screen,
-} from '../../../utils/test-utils.js';
+} from '../../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import AddFavorite from '../../../components/presentationals/buttons/AddFavorite';
 

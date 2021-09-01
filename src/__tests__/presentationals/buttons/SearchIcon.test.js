@@ -4,7 +4,7 @@ import {
 } from '../../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import SearchIcon from '../../../components/presentationals/buttons/SearchIcon';
-
+/* eslint-disable react/display-name */
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),
   FontAwesomeIcon: () => <div data-testid="icon" />,

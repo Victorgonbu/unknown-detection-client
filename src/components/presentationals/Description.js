@@ -29,7 +29,7 @@ Description.propTypes = {
 
 Description.defaultProps = {
   favorite: null,
-  favCounter: null,
+  favCounter: 0,
 };
 
 export default Description;
