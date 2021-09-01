@@ -15,6 +15,7 @@ import { setCurrentPathName } from '../../actions/index';
 import Errors from '../presentationals/Errors';
 import Description from '../presentationals/Description';
 import AddFavoriteButton from '../presentationals/buttons/AddFavorite';
+
 function Post(props) {
   const { authToken, setCurrentPathName } = props;
   const location = useLocation();
@@ -49,7 +50,7 @@ function Post(props) {
       const request = await axios.post(`${FAVORITE_POSTS}`, data,
         { headers: { Authorization: `Bearer ${authToken}` } });
       setPost((state) => ({ ...state, favorite: { id: request.data.data.id } }));
-    } catch {
+    } catch{
       setErrors(['Unable to Add post to favorites']);
       setPost((state) => ({ ...state, favorite: null }));
       setFavorites((state) => state - 1);
@@ -67,7 +68,7 @@ function Post(props) {
     }
   };
 
-  const handleFavoriteButton = async () => {
+  const handleFavoriteButton = () => {
     if (post.favorite) {
       setPost((state) => ({ ...state, favorite: null }));
       setFavorites((state) => state - 1);
@@ -80,7 +81,7 @@ function Post(props) {
   };
 
   const handleButtonText = () => {
-    if (post.favorite) return 'Remove from favorites';
+    if (post.favorite) return 'Remove from Favorites';
     return 'Add to Favorites';
   };
 
@@ -103,9 +104,10 @@ function Post(props) {
           </div>
         </div>
 
-        <Description favorite={post.favorite} favCounter={favorites} />
-        
-        {authToken && <AddFavoriteButton handleClick={handleFavoriteButton} />}
+        <Description text={post.description} favorite={post.favorite} favCounter={favorites} />
+
+        {authToken
+        && <AddFavoriteButton handleClick={handleFavoriteButton} text={handleButtonText()} />}
       </>
       )}
     </div>
