@@ -2,7 +2,7 @@ import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
-  act, render, fireEvent, waitFor, reduxStore, getByAltText,
+  render, waitFor,
 } from '../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import Post from '../../components/containers/Post';
@@ -50,28 +50,9 @@ const requestResponse = {
   ],
 };
 
-const favoriteResponse = {
-  data: {
-    id: "1",
-    relationships: {
-      post: {data: {id: '30', type: 'post'}},
-      user: {data: {id: '5', type: 'user'}},
-    },
-    type: 'favorite',
-  },
-}
-
 const server = setupServer(
   rest.get('http://localhost/api/v1/posts/1', (req, res, ctx) => res(ctx.json(
     requestResponse,
-  ))),
-  rest.post('http://localhost/api/v1/favorites', (req, res, ctx) => res(ctx.json(
-    favoriteResponse,
-  ))),
-  rest.delete('http://localhost/api/v1/favorites', (req, res, ctx) => res(ctx.json(
-    {
-      message: 'Post deleted from favorites',
-    },
   ))),
 );
 
@@ -89,6 +70,12 @@ describe('Post', () => {
     expect(getByTestId('description')).toBeInTheDocument();
   });
 
+  it('render error message if unable to fetch from API', async () => {
+    server.use(rest.get('http://localhost/api/v1/posts/1', (req, res, ctx) => res(ctx.status(500))));
+    const { getByText } = render(<Post />, { user: { token: null } });
+    await waitFor(() => expect(getByText('Unable to fetch Post')).toBeInTheDocument());
+  });
+
   describe('add to favorites button', () => {
     it('render if user logged in', async () => {
       const { getByTestId } = render(<Post />, { user: { token: 'authToken' } });
@@ -100,6 +87,5 @@ describe('Post', () => {
       await waitFor(() => expect(getByTestId('user-avatar')).toBeInTheDocument());
       expect(queryByTestId('favorite-button')).not.toBeInTheDocument();
     });
-    
   });
 });

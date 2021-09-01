@@ -50,7 +50,7 @@ function Post(props) {
       const request = await axios.post(`${FAVORITE_POSTS}`, data,
         { headers: { Authorization: `Bearer ${authToken}` } });
       setPost((state) => ({ ...state, favorite: { id: request.data.data.id } }));
-    } catch{
+    } catch {
       setErrors(['Unable to Add post to favorites']);
       setPost((state) => ({ ...state, favorite: null }));
       setFavorites((state) => state - 1);
