@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  render, fireEvent, screen
-} from '../../../utils/test-utils.js';
+  render, fireEvent, screen,
+} from '../../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import SearchIcon from '../../../components/presentationals/buttons/SearchIcon';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),
-  FontAwesomeIcon: () => <div data-testid="icon"/>,
+  FontAwesomeIcon: () => <div data-testid="icon" />,
 }));
 
 const mockHandleClick = jest.fn();
@@ -22,7 +22,7 @@ describe('SearchIcon', () => {
   });
 
   it('render close button if active prop is passed', () => {
-    render(<SearchIcon active={true} handleClick={mockHandleClick} />);
+    render(<SearchIcon active handleClick={mockHandleClick} />);
     expect(screen.getByTestId('close-button')).toBeInTheDocument();
   });
 
@@ -30,5 +30,5 @@ describe('SearchIcon', () => {
     const button = screen.getByTestId('search-icon');
     fireEvent.click(button);
     expect(mockHandleClick).toHaveBeenCalledTimes(1);
-  })
+  });
 });

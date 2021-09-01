@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  render, fireEvent, screen
+  render, fireEvent, screen,
 } from '../../../utils/test-utils.js';
 import '@testing-library/jest-dom/extend-expect';
 import AddFavorite from '../../../components/presentationals/buttons/AddFavorite';
@@ -9,7 +9,7 @@ const mockHandleClick = jest.fn();
 
 describe('AddFavorite', () => {
   beforeEach(() => {
-    render(<AddFavorite text='favorite' handleClick={mockHandleClick} />);
+    render(<AddFavorite text="favorite" handleClick={mockHandleClick} />);
   });
   it('render button with text passed in props', () => {
     const button = screen.getByText('favorite');
@@ -20,5 +20,5 @@ describe('AddFavorite', () => {
     const button = screen.getByText('favorite');
     fireEvent.click(button);
     expect(mockHandleClick).toHaveBeenCalledTimes(1);
-  })
+  });
 });

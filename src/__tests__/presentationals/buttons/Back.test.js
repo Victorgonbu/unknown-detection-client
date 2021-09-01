@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  render, fireEvent, screen
+  render, fireEvent, screen,
 } from '../../../utils/test-utils.js';
 import '@testing-library/jest-dom/extend-expect';
 import BackButton from '../../../components/presentationals/buttons/Back';
@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),
-  FontAwesomeIcon: () => <div data-testid="icon"/>,
+  FontAwesomeIcon: () => <div data-testid="icon" />,
 }));
 
 describe('Back', () => {
