@@ -41,10 +41,10 @@ describe('SignUp', () => {
   const initialState = {
     user: {
       name: null,
-    }
+    },
   };
   it('render signup form with fields and title', () => {
-    const {getByTestId, getAllByTestId} = render(<SignUp/>, initialState);
+    const { getByTestId, getAllByTestId } = render(<SignUp />, initialState);
     expect(getAllByTestId('text-field').length).toBe(2);
     expect(getAllByTestId('form-control').length).toBe(2);
     expect(getByTestId('button')).toBeInTheDocument();
@@ -52,34 +52,32 @@ describe('SignUp', () => {
 
   describe('when submit button is clicked', () => {
     it('dispatch action to redux store if valid credentials', async () => {
-      const {getByTestId} = render(<SignUp/>, initialState);
+      const { getByTestId } = render(<SignUp />, initialState);
       const submitButton = getByTestId('button');
       fireEvent.click(submitButton);
       const actions = reduxStore.getActions();
       await waitFor(() => expect(actions.length).toBe(1));
-      expect(actions[0]).toEqual({type: 'SET_USER', payload: requestResponse});
+      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse });
     });
 
     it('render error messages if invalid credentials', async () => {
       server.use(rest.post('http://localhost/api/v1/users', (req, res, ctx) => res(
         ctx.status(404),
         ctx.json({
-          errors: ['Invalid credentials']
+          errors: ['Invalid credentials'],
         }),
       )));
-      const {getByText, getByTestId} = render(<SignUp/>, initialState);
+      const { getByText, getByTestId } = render(<SignUp />, initialState);
       const submitButton = getByTestId('button');
       fireEvent.click(submitButton);
       await waitFor(() => expect(getByText('Invalid credentials')).toBeInTheDocument());
-      
     });
   });
 
   it('redirect to Posts route if user already sign in', () => {
-    initialState.user.name = "victor";
-    render(<SignUp/>, initialState);
+    initialState.user.name = 'victor';
+    render(<SignUp />, initialState);
     expect(mockNavigate).toHaveBeenCalledTimes(1);
     expect(mockNavigate).toHaveBeenCalledWith('/posts');
   });
-
 });
