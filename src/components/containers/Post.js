@@ -7,16 +7,14 @@ import { POSTS, FAVORITE_POSTS } from '../../API';
 import {
   backdropContainer, fullSize,
   absoluteLabel, authorDetails, authorName,
-  description, descriptionTop, descriptionTitle,
-  descriptionText, favoriteButton,
 } from '../../style/PostShow.module.css';
 import { container } from '../../style/Post.module.css';
 import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
-import Favorite from '../presentationals/Favorite';
 import { setCurrentPathName } from '../../actions/index';
 import Errors from '../presentationals/Errors';
-
+import Description from '../presentationals/Description';
+import AddFavoriteButton from '../presentationals/buttons/AddFavorite';
 function Post(props) {
   const { authToken, setCurrentPathName } = props;
   const location = useLocation();
@@ -105,15 +103,9 @@ function Post(props) {
           </div>
         </div>
 
-        <div className={description}>
-          <div className={descriptionTop}>
-            <h1 className={descriptionTitle}>About this</h1>
-            <Favorite inFavorites={post.favorite} counter={favorites} />
-          </div>
-          <p className={descriptionText}>{post.description}</p>
-        </div>
-        {authToken
-          && <button onClick={handleFavoriteButton} type="button" className={favoriteButton}>{handleButtonText()}</button>}
+        <Description favorite={post.favorite} favCounter={favorites} />
+        
+        {authToken && <AddFavoriteButton handleClick={handleFavoriteButton} />}
       </>
       )}
     </div>
