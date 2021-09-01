@@ -9,6 +9,7 @@ function SearchIcon(props) {
       {active
         ? (
           <button
+            data-testid="close-button"
             type="button"
             className={navButton}
             onClick={handleClick}
