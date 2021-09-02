@@ -18,7 +18,7 @@ function App(props) {
   useToggleEffect(appRef, active, [dropdownActive]);
 
   return (
-    <div className={app}>
+    <div data-testid="app" className={app}>
       <DropdownMenu />
       <div ref={appRef} className={appContainer}>
         <Navbar />
