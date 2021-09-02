@@ -19,7 +19,7 @@ function Post(props) {
   return (
     <div className={post}>
       <img alt="Post poster" className={postImage} src={imageUrl} />
-      <button type="button" onClick={handleNavigate} className={postInfo}>
+      <button data-testid="link-to" type="button" onClick={handleNavigate} className={postInfo}>
         <div className={titleFavorite}>
           <p className={postTitle}>{title}</p>
           {favorite
