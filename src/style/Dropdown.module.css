@@ -1,3 +1,4 @@
+/* stylelint-disable value-keyword-case */
 .container {
   display: flex;
   flex-direction: column;
@@ -55,7 +56,7 @@
 }
 
 .iconContainer {
-  composes: flexcentered from './App.module.css';
+  composes: flexCentered from './App.module.css';
   height: 3.2em;
   width: 3.2em;
   border: 1px solid var(--light-gray);
@@ -73,7 +74,8 @@
 }
 
 .link {
-  color: black;
+  color: var(--light-black);
+  font-weight: 400;
   text-decoration: none;
   padding: 0.7em 2rem;
   display: inline-block;

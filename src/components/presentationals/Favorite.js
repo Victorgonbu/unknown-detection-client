@@ -37,7 +37,7 @@ Favorite.propTypes = {
 };
 
 Favorite.defaultProps = {
-  counter: 0,
+  counter: null,
   withLabel: false,
   inFavorites: null,
 };
