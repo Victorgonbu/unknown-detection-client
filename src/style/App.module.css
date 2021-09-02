@@ -5,16 +5,15 @@
 }
 
 .app {
- position: relative;
- display: flex;
- overflow-x: hidden;
- max-width: 1500px;
- width: 100vw;
- margin: 0 auto;
+  position: relative;
+  display: flex;
+  overflow-x: hidden;
+  max-width: 1500px;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 .appContainer {
-
   min-width: 100%;
   position: relative;
   left: -200px;

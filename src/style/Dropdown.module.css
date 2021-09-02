@@ -33,6 +33,7 @@
   color: black;
   margin-bottom: 5px;
 }
+
 .top {
   height: 90%;
 }
@@ -54,19 +55,19 @@
 }
 
 .iconContainer {
-  composes: flexCentered from './App.module.css';
+  composes: flexcentered from './App.module.css';
   height: 3.2em;
   width: 3.2em;
   border: 1px solid var(--light-gray);
   border-radius: 50%;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .icon {
   font-size: 2em;
 }
 
-.links{
+.links {
   padding: 1em 0;
   margin-top: 1em;
 }
@@ -74,7 +75,7 @@
 .link {
   color: black;
   text-decoration: none;
-  padding: .7em 2rem;
+  padding: 0.7em 2rem;
   display: inline-block;
   width: 100%;
   text-align: left;

@@ -14,7 +14,7 @@
   font-family: 'Roboto', sans-serif;
   color: var(--light-black);
   font-weight: 500;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .titleFavorite {
@@ -22,7 +22,7 @@
 }
 
 .postTitle {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .postLocation {
@@ -39,32 +39,31 @@
 .favoriteCounter {
   font-weight: 700;
   color: var(--light-black);
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 
 .favoriteIcon {
   color: var(--light-gray);
 }
 
-.activeFavorite{
-  color:  var(--red);
+.activeFavorite {
+  color: var(--red);
 }
 
 .locationLabel {
-  font-size: .8em;
-  padding-top: .1em;
+  font-size: 0.8em;
+  padding-top: 0.1em;
   color: gray;
 }
 
 .postImage {
   width: 100%;
   height: 300px;
-
 }
 
 .carouselContainer {
   box-sizing: border-box;
-  height:calc(100% - 2rem);
+  height: calc(100% - 2rem);
   align-items: flex-start;
   padding-top: 2em;
 }
@@ -76,9 +75,8 @@
   border: none;
   background-color: #fff;
   box-shadow: 0 7px 15px var(--light-gray);
-  
 }
 
 .carouselDots {
-  bottom:10vh;
+  bottom: 10vh;
 }

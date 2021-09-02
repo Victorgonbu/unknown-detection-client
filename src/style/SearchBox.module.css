@@ -1,6 +1,8 @@
+
+/* stylelint-disable value-keyword-case */
 .container {
   composes: flexCentered from './App.module.css';
-  padding: .5em;
+  padding: 0.5em;
   transition: 200ms ease-out;
 }
 

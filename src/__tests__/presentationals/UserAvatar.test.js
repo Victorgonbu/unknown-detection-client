@@ -8,7 +8,7 @@ import UserAvatar from '../../components/presentationals/UserAvatar';
 /* eslint-disable react/display-name */
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),
-  FontAwesomeIcon: () => <div data-testid="icon" />,
+  FontAwesomeIcon: () => <span data-testid="icon" />,
 }));
 
 describe('UserAvatar', () => {
