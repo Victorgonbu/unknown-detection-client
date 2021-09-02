@@ -10,9 +10,9 @@ jest.mock('../../components/presentationals/Favorite', () => () => <div data-tes
 
 describe('Description', () => {
   it('render description title, text and favorite', () => {
-    render(<Description text="description"/>);
+    render(<Description text="description" />);
     expect(screen.getByText('About this')).toBeInTheDocument();
     expect(screen.getByTestId('favorite')).toBeInTheDocument();
     expect(screen.getByText('description')).toBeInTheDocument();
-  })
+  });
 });

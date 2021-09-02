@@ -15,5 +15,5 @@ describe('UserAvatar', () => {
   it('render user icon', () => {
     render(<UserAvatar />);
     expect(screen.getByTestId('icon')).toBeInTheDocument();
-  })
+  });
 });

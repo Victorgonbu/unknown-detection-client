@@ -7,7 +7,7 @@ import NavCurrentPath from '../../components/presentationals/NavCurrentPath';
 
 describe('NavCurrentPath', () => {
   it('render value passed in props', () => {
-    render(<NavCurrentPath value="posts"/>);
+    render(<NavCurrentPath value="posts" />);
     expect(screen.getByText('posts')).toBeInTheDocument();
   });
 });

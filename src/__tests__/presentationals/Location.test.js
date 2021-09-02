@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  render, screen, fireEvent
+  render, screen,
 } from '../../utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import Location from '../../components/presentationals/Location';

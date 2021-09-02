@@ -18,14 +18,14 @@ describe('Favorite', () => {
   });
 
   it('render favorite with label', () => {
-    render(<Favorite withLabel/>);
+    render(<Favorite withLabel />);
     expect(screen.getByTestId('icon')).toBeInTheDocument();
     expect(screen.getByText('Favorite')).toBeInTheDocument();
   });
-  
+
   it('render favorite with counter', () => {
-    render(<Favorite counter={20}/>);
+    render(<Favorite counter={20} />);
     expect(screen.getByTestId('icon')).toBeInTheDocument();
     expect(screen.getByText('20')).toBeInTheDocument();
-  })
+  });
 });

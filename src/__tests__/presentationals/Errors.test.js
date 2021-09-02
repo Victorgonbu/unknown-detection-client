@@ -7,7 +7,7 @@ import Errors from '../../components/presentationals/Errors';
 
 describe('Errors', () => {
   it('render list of errors passed in props', () => {
-    render(<Errors list={['error', 'other error']}/>)
+    render(<Errors list={['error', 'other error']} />);
     expect(screen.getByTestId('errors')).toBeInTheDocument();
     expect(screen.getByText('error')).toBeInTheDocument();
     expect(screen.getByText('other error')).toBeInTheDocument();
