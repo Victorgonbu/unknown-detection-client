@@ -19,8 +19,8 @@ function UserLinks(props) {
           {email}
         </span>
       </div>
-      <Link onClick={handleToggle} to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
-      <Link onClick={handleToggle} to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
+      <Link data-testid="link" onClick={handleToggle} to="/posts" activeClassName={activeLink} className={link}>Posts</Link>
+      <Link data-testid="link" onClick={handleToggle} to="/favorites" activeClassName={activeLink} className={link}>Favorites</Link>
       <div className={link}>Notifications</div>
       <div className={link}>Messages</div>
     </div>
