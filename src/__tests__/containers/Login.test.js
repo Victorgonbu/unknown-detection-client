@@ -27,7 +27,7 @@ const requestResponse = {
 };
 
 const server = setupServer(
-  rest.post('http://localhost/api/v1/auth', (req, res, ctx) => res(ctx.json(
+  rest.post('https://unknow-detections.herokuapp.com/api/v1/auth', (req, res, ctx) => res(ctx.json(
     requestResponse,
   ))),
 );
@@ -62,7 +62,7 @@ describe('Login', () => {
     });
 
     it('render error list if invalid credentials', async () => {
-      server.use(rest.post('http://localhost/api/v1/auth', (req, res, ctx) => res(
+      server.use(rest.post('https://unknow-detections.herokuapp.com/api/v1/auth', (req, res, ctx) => res(
         ctx.status(404),
         ctx.json({
           errors: ['invalid credentials'],
