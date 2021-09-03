@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import axios from '../../utils/axios';
 import { POSTS, FAVORITE_POSTS } from '../../API';
 import {
   backdropContainer, fullSize,

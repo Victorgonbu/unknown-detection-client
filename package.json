@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://unknow-detections.herokuapp.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
@@ -14,6 +13,7 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "history": "^5.0.1",
     "msw": "^0.35.0",
     "prop-types": "^15.7.2",

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../utils/axios';
 import { POSTS, FAVORITE_POSTS, SEARCH } from '../API';
 
 const SET_USER = 'SET_USER';
