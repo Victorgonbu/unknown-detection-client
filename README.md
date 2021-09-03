@@ -34,7 +34,7 @@ So, if you want to save those places/objects that sound interesting in visiting 
 - SEARCH BOX  
 
 <div align="center">
-  <img src="/src/imgs/sh/SEARCHBOX.png" alt='search box screenshot' /> 
+  <img src="/src/imgs/screenshots/SEARCHBOX.png" alt='search box screenshot' /> 
 </div>
 
 - FAVORITES  
