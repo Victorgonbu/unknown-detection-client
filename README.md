@@ -1,37 +1,58 @@
-# Movie Couch
+# Unknown Detections - Microverse final capstone project.
 
-React web app to search for movies using the [TMDB API](https://www.themoviedb.org)
-
-## App screenshots  
-
-- HOME  
-
-<div align="center">
-  <img src="/src/imgs/sh/HOME.png" alt='Home screenshot' /> 
-</div>   
+The world is a big place and strange places/objects are everywhere.
+This React web app servers as a platform to look for posts of strange places or things found by other people around the world.
 
 ## Usage
 
-- Filter   
->> It counts with a dropdown menu filter to look for movies by genres, popularity and rating.  
+This app counts with fully integrated JWT user authentication to save all those strange places or places where strange objects are found just click the favorite button to add them to your favorites list. Nevertheless, all posts can be viewed by no authenticated users.
+
+It also counts with a search box to look for any post you want by just typing its title or part of it.
+
+So, if you want to save those places/objects that sound interesting in visiting on your next vacation, do not doubt to sign in!.
+
+## App screenshots
+
+- SIGN IN  
 
 <div align="center">
-  <img src="/src/imgs/sh/FILTER.png" alt='Filter screenshot' /> 
+  <img src="/src/imgs/screenshots/SIGNUP.png" alt='sign up screenshot' /> 
+</div> 
+
+- LOG IN  
+
+<div align="center">
+  <img src="/src/imgs/screenshots/LOGIN.png" alt='login screenshot' /> 
+</div> 
+
+- ALL POSTS  
+
+<div align="center">
+  <img src="/src/imgs/screenshots/ALLPOSTS.png" alt='all posts screenshot' /> 
+</div> 
+
+- SEARCH BOX  
+
+<div align="center">
+  <img src="/src/imgs/sh/SERCHBOX.png" alt='search box screenshot' /> 
 </div>
 
-- Search  
->> It counts with a search box to look for the desired title.  
+- FAVORITES  
 
 <div align="center">
-  <img src="/src/imgs/sh/SEARCH.png" alt='Search screenshot' /> 
+  <img src="/src/imgs/screenshots/FAVORITES.png" alt='favorites screenshot' /> 
+</div> 
+
+- DROPDOWN  
+
+<div align="center">
+  <img src="/src/imgs/screenshots/DROPDOWN.png" alt='dropdown screenshot' /> 
 </div>
 
-- More details  
-
->> Every movie listed counts with a 'More details' button to display all details about it.
+- POST  
 
 <div align="center">
-  <img src="/src/imgs/sh/MOVIE.png" alt='More details screenshot' /> 
+  <img src="/src/imgs/screenshots/POST.png" alt='post screenshot' /> 
 </div>
 
 ## Built With
@@ -44,22 +65,18 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 - React-DOM
 - Redux
 - prop-types
-- TMDB API
+- Ruby on Rails
 - React testing library
 
 ## Live Demo
 
-[Netlify deploy link](https://movie-couch.netlify.app)
-
-## Videos Demo
-https://gist.github.com/Shaqri/2a165ff7278f6776aa17f72443d407bd
-
+[Netlify deploy link](https://unknown-detections.netlify.app/posts)
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-- Git clone https://github.com/Shaqri/Movie-Couch.git
+- Git clone https://github.com/Shaqri/unknown-detection-client.git
 - Move to the root directory in your command line
 - run `yarn install` to install all dependencies
 - run `yarn start` to start the app in your localhost
