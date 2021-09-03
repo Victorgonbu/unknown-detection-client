@@ -1,2 +1,1 @@
-/api/*  https://unknow-detections.herokuapp.com/api/:splat  200
-/posts/*   https://unknown-detections.netlify.app/:splat 200
+/* /index.html 200
