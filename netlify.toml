@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/api/v1/*"
+to = "https://unknow-detections.herokuapp.com"
+status = 200
