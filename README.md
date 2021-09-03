@@ -1,7 +1,7 @@
 # Unknown Detections - Microverse final capstone project.
 
 The world is a big place and strange places/objects are everywhere.
-This React web app servers as a platform to look for posts of strange places or things found by other people around the world.
+This React web app servers as a platform to look for posts of strange places or things found by other people around the world. the RoR backend of this app can be found [here](https://github.com/Shaqri/unknown-detection-api).
 
 ## Usage
 
