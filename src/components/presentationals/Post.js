@@ -7,10 +7,9 @@ import {
 import Location from './Location';
 import Favorite from './Favorite';
 
-function Post(props) {
-  const {
-    imageUrl, title, location, favorite, id,
-  } = props;
+function Post({
+  imageUrl, title, location, favorite, id,
+}) {
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/posts/${title}`, { state: { id } });
