@@ -6,7 +6,6 @@ import {
 
 function Favorite(props) {
   const { withLabel, counter, inFavorites } = props;
-
   const favIconClasses = () => {
     if (inFavorites) return `${favoriteIcon} ${activeFavorite}`;
     return favoriteIcon;

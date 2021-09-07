@@ -2,8 +2,6 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from '../../utils/axios';
-import { POSTS, FAVORITE_POSTS } from '../../API';
 import {
   backdropContainer, fullSize,
   absoluteLabel, authorDetails, authorName,
@@ -11,72 +9,40 @@ import {
 import { container } from '../../style/Post.module.css';
 import Location from '../presentationals/Location';
 import UserAvatar from '../presentationals/UserAvatar';
-import { setCurrentPathName } from '../../actions/index';
+import {
+  removePostFromFavorites,
+  addPostToFavorites, setPostAttributes, getPost,
+} from '../../actions/index';
 import Errors from '../presentationals/Errors';
 import Description from '../presentationals/Description';
 import AddFavoriteButton from '../presentationals/buttons/AddFavorite';
 
 function Post(props) {
-  const { authToken, setCurrentPathName } = props;
+  const {
+    authToken, setPostAttributes,
+    removePostFromFavorites, addPostToFavorites, post,
+    postAuthor, postFavorites, getPost,
+  } = props;
   const location = useLocation();
-  const [post, setPost] = useState();
-  const [author, setAuthor] = useState();
-  const [favorites, setFavorites] = useState();
   const postID = location.state.id;
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const request = await axios.get(`${POSTS}/${postID}`, {
-          headers:
-          { Authorization: `Bearer ${authToken}` },
-        });
-        setCurrentPathName(request.data.data.attributes.title);
-        setPost(request.data.data.attributes);
-        setAuthor(request.data.included[0].attributes);
-        setFavorites(request.data.data.relationships.favorites.data.length);
-      } catch {
-        setErrors(['Unable to fetch Post']);
-      }
+    getPost(postID, authToken, setErrors);
+    return () => {
+      setPostAttributes('SET_CURRENT_POST', null);
     };
-
-    makeRequest();
   }, []);
-
-  const addPostToFavorites = async () => {
-    try {
-      const data = { favorite: { post_id: postID } };
-      const request = await axios.post(`${FAVORITE_POSTS}`, data,
-        { headers: { Authorization: `Bearer ${authToken}` } });
-      setPost((state) => ({ ...state, favorite: { id: request.data.data.id } }));
-    } catch {
-      setErrors(['Unable to Add post to favorites']);
-      setPost((state) => ({ ...state, favorite: null }));
-      setFavorites((state) => state - 1);
-    }
-  };
-
-  const removePostFromFavorites = async () => {
-    try {
-      await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`,
-        { headers: { Authorization: `Bearer ${authToken}` } });
-    } catch {
-      setErrors(['Unable to remove post from favorites']);
-      setPost((state) => ({ ...state, favorite: { id: null } }));
-      setFavorites((state) => state + 1);
-    }
-  };
 
   const handleFavoriteButton = () => {
     if (post.favorite) {
-      setPost((state) => ({ ...state, favorite: null }));
-      setFavorites((state) => state - 1);
-      removePostFromFavorites();
+      removePostFromFavorites(authToken, setErrors);
+      setPostAttributes('SET_CURRENT_FAVORITE', null);
+      setPostAttributes('UPDATE_FAVORITES_COUNTER', -1);
     } else {
-      setPost((state) => ({ ...state, favorite: { id: null } }));
-      setFavorites((state) => state + 1);
-      addPostToFavorites();
+      addPostToFavorites(postID, authToken, setErrors);
+      setPostAttributes('SET_CURRENT_FAVORITE', { id: '' });
+      setPostAttributes('UPDATE_FAVORITES_COUNTER', 1);
     }
   };
 
@@ -88,7 +54,7 @@ function Post(props) {
   return (
     <div className={container}>
       <Errors list={errors} />
-      {post && author
+      {post && postAuthor
       && (
       <>
         <div className={backdropContainer}>
@@ -96,7 +62,7 @@ function Post(props) {
           <div className={absoluteLabel}>
             <div className={authorDetails}>
               <UserAvatar />
-              <span className={authorName}>{author.name}</span>
+              <span className={authorName}>{postAuthor.name}</span>
             </div>
 
             <Location value={post.location} />
@@ -104,7 +70,7 @@ function Post(props) {
           </div>
         </div>
 
-        <Description text={post.description} favorite={post.favorite} favCounter={favorites} />
+        <Description text={post.description} favorite={post.favorite} favCounter={postFavorites} />
 
         {authToken
         && <AddFavoriteButton handleClick={handleFavoriteButton} text={handleButtonText()} />}
@@ -116,19 +82,47 @@ function Post(props) {
 
 Post.propTypes = {
   authToken: PropTypes.string,
-  setCurrentPathName: PropTypes.func.isRequired,
+  addPostToFavorites: PropTypes.func.isRequired,
+  removePostFromFavorites: PropTypes.func.isRequired,
+  setPostAttributes: PropTypes.func.isRequired,
+  post: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object,
+  ])),
+  postAuthor: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ])),
+  postFavorites: PropTypes.number,
+  getPost: PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {
   authToken: null,
+  post: null,
+  postAuthor: null,
+  postFavorites: null,
 };
 
 const mapStateToProps = (state) => ({
   authToken: state.user.token,
+  post: state.posts.current,
+  postAuthor: state.posts.author,
+  postFavorites: state.posts.favoritesCounter,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentPathName: (name) => { dispatch(setCurrentPathName(name)); },
+  addPostToFavorites: (postID, token, setErrors) => {
+    dispatch(
+      addPostToFavorites(postID, token, setErrors),
+    );
+  },
+  removePostFromFavorites: (token, setErrors) => {
+    dispatch(removePostFromFavorites(token, setErrors));
+  },
+  setPostAttributes: (attr, payload) => { dispatch(setPostAttributes(attr, payload)); },
+  getPost: (postID, token, setErrors) => { dispatch(getPost(postID, token, setErrors)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

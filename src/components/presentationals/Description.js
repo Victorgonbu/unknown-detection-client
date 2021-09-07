@@ -19,10 +19,10 @@ function Description(props) {
 }
 
 Description.propTypes = {
-  favorite: PropTypes.oneOfType([
+  favorite: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.string,
     PropTypes.number,
-    PropTypes.object,
-  ]),
+  ])),
   favCounter: PropTypes.number,
   text: PropTypes.string.isRequired,
 };

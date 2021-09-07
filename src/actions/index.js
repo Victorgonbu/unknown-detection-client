@@ -7,6 +7,11 @@ const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 const SET_POSTS = 'SET_POSTS';
 const SET_CURRENT_PATH_NAME = 'SET_CURRENT_PATH_NAME';
 const SET_SEARCH_STATE = 'SET_SEARCH_STATE';
+const SET_CURRENT_POST = 'SET_CURRENT_POST';
+const SET_CURRENT_AUTHOR = 'SET_CURRENT_AUTHOR';
+const SET_FAVORITES_COUNTER = 'SET_FAVORITES_COUNTER';
+const SET_CURRENT_FAVORITE = 'SET_CURRENT_FAVORITE';
+const UPDATE_FAVORITES_COUNTER = 'UPDATE_FAVORITES_COUNTER';
 
 const logOut = () => ({
   type: LOG_OUT,
@@ -32,6 +37,11 @@ const changeSearchState = () => ({
   type: SET_SEARCH_STATE,
 });
 
+const setPostAttributes = (type, data) => ({
+  type,
+  payload: data,
+});
+
 const authenticateUser = (data, url, setErrors) => async (dispatch) => {
   try {
     const userData = { user: data };
@@ -39,6 +49,49 @@ const authenticateUser = (data, url, setErrors) => async (dispatch) => {
     dispatch(setUser(request.data.data.attributes));
   } catch (error) {
     setErrors(error.response.data.errors);
+  }
+};
+
+const addPostToFavorites = (postID, authToken, setErrors) => async (dispatch) => {
+  try {
+    const data = { favorite: { post_id: postID } };
+    const request = await axios.post(`${FAVORITE_POSTS}`, data,
+      { headers: { Authorization: `Bearer ${authToken}` } });
+    dispatch(setPostAttributes(SET_CURRENT_FAVORITE, { id: request.data.data.id }));
+  } catch {
+    setErrors(['Unable to Add post to favorites']);
+    dispatch(setPostAttributes(SET_CURRENT_FAVORITE, null));
+    dispatch(setPostAttributes(UPDATE_FAVORITES_COUNTER, -1));
+  }
+};
+
+const removePostFromFavorites = (authToken, setErrors) => async (dispatch, getState) => {
+  try {
+    const post = getState().posts.current;
+    await axios.delete(`${FAVORITE_POSTS}/${post.favorite.id}`,
+      { headers: { Authorization: `Bearer ${authToken}` } });
+  } catch {
+    setErrors(['Unable to remove post from favorites']);
+    dispatch(setPostAttributes(SET_CURRENT_FAVORITE, { id: '' }));
+    dispatch(setPostAttributes(UPDATE_FAVORITES_COUNTER, 1));
+  }
+};
+
+const getPost = (postID, authToken, setErrors) => async (dispatch) => {
+  try {
+    const request = await axios.get(`${POSTS}/${postID}`, {
+      headers:
+        { Authorization: `Bearer ${authToken}` },
+    });
+
+    const { data } = request;
+    dispatch(setCurrentPathName(data.data.attributes.title));
+    dispatch(setPostAttributes(SET_CURRENT_POST, data.data.attributes));
+    dispatch(setPostAttributes(SET_CURRENT_AUTHOR, data.included[0].attributes));
+    dispatch(setPostAttributes(SET_FAVORITES_COUNTER,
+      data.data.relationships.favorites.data.length));
+  } catch {
+    setErrors(['Unable to fetch Post']);
   }
 };
 
@@ -66,7 +119,11 @@ export {
   authenticateUser,
   logOut,
   toggleDropdown,
+  getPost,
   getPosts,
   setCurrentPathName,
   changeSearchState,
+  removePostFromFavorites,
+  addPostToFavorites,
+  setPostAttributes,
 };
