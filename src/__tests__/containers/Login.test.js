@@ -31,7 +31,7 @@ const requestResponse = {
 };
 
 const server = setupServer(
-  rest.post(process.env.REACT_APP_API_URL + '/api/v1/authentication', (req, res, ctx) => res(ctx.json(
+  rest.post(`${process.env.REACT_APP_API_URL}/api/v1/authentication`, (req, res, ctx) => res(ctx.json(
     requestResponse,
   ))),
 );
@@ -66,7 +66,7 @@ describe('Login', () => {
     });
 
     it('render error list if invalid credentials', async () => {
-      server.use(rest.post(process.env.REACT_APP_API_URL + '/api/v1/authentication', (req, res, ctx) => res(
+      server.use(rest.post(`${process.env.REACT_APP_API_URL}/api/v1/authentication`, (req, res, ctx) => res(
         ctx.status(422),
         ctx.json({
           errors: ['invalid credentials'],

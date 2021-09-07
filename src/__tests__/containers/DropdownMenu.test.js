@@ -18,7 +18,7 @@ describe('DropdownMenu', () => {
     },
     navbar: {
       dropdown: true,
-    }
+    },
   };
   describe('initial redux state', () => {
     it('render UserLinks and FooterLinks if current user', () => {

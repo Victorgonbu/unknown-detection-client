@@ -22,17 +22,17 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const requestResponse = {
- data: {
-   attributes: {
-    name: 'victor',
-    email: 'victor@victor.com',
-    token: 'afela234',
-   },
- },
+  data: {
+    attributes: {
+      name: 'victor',
+      email: 'victor@victor.com',
+      token: 'afela234',
+    },
+  },
 };
 
 const server = setupServer(
-  rest.post(process.env.REACT_APP_API_URL + '/api/v1/users', (req, res, ctx) => res(ctx.json(
+  rest.post(`${process.env.REACT_APP_API_URL}/api/v1/users`, (req, res, ctx) => res(ctx.json(
     requestResponse,
   ))),
 );
@@ -65,7 +65,7 @@ describe('SignUp', () => {
     });
 
     it('render error messages if invalid credentials', async () => {
-      server.use(rest.post(process.env.REACT_APP_API_URL + '/api/v1/users', (req, res, ctx) => res(
+      server.use(rest.post(`${process.env.REACT_APP_API_URL}/api/v1/users`, (req, res, ctx) => res(
         ctx.status(404),
         ctx.json({
           errors: ['Invalid credentials'],
