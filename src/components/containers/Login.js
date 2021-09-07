@@ -13,6 +13,7 @@ import { LOGIN } from '../../API';
 import { title, container, formContainer } from '../../style/Forms.module.css';
 import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
+import BackButton from '../presentationals/buttons/Back';
 
 function Login(props) {
   const { attemptLogin, username } = props;
@@ -69,6 +70,7 @@ function Login(props) {
 
         <SubmitButton text="Login" handleSubmit={handleSubmit} />
       </form>
+      <BackButton />
     </div>
   );
 }

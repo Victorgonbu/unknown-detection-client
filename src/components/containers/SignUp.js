@@ -11,6 +11,7 @@ import SubmitButton from '../presentationals/buttons/Submit';
 import { SIGNUP } from '../../API';
 import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
+import BackButton from '../presentationals/buttons/Back';
 
 function SignUp(props) {
   const [name, setName] = useState('');
@@ -83,6 +84,7 @@ function SignUp(props) {
         <SubmitButton text="Sign up" handleSubmit={handleSubmit} />
 
       </form>
+      <BackButton />
     </div>
   );
 }
