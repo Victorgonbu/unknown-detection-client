@@ -16,7 +16,8 @@ import useStyles from '../../hooks/useStyles';
 
 function Login(props) {
   const { attemptLogin, username } = props;
-  const [values, setValues] = useState({ email: '', password: '' });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
@@ -26,14 +27,8 @@ function Login(props) {
     if (username) navigate('/posts');
   }, [username]);
 
-  const handleChange = (e) => {
-    setValues((state) => ({
-      ...state, [e.target.id]: e.target.value,
-    }));
-  };
-
   const handleSubmit = () => {
-    attemptLogin(values, LOGIN, setErrors);
+    attemptLogin({ email, password }, LOGIN, setErrors);
   };
 
   return (
@@ -45,7 +40,8 @@ function Login(props) {
         <TextField
           id="email"
           label="Email"
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
           className={`${classes.root} ${classes.formControl}`}
         />
@@ -53,10 +49,10 @@ function Login(props) {
         <FormControl variant="outlined" className={`${classes.formControl} ${classes.root}`}>
           <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
-            value={values.password}
+            value={password}
             id="password"
             type={showPassword ? 'text' : 'password'}
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
             labelWidth={70}
             endAdornment={(
               <InputAdornment>

@@ -27,13 +27,12 @@ function SignUp(props) {
   }, [currentUser]);
 
   const handleSubmit = () => {
-    const values = {
+    attemptSignUp({
       name,
       email,
       password,
       password_confirmation: passwordConf,
-    };
-    attemptSignUp(values, SIGNUP, setErrors);
+    }, SIGNUP, setErrors);
   };
   return (
     <div className={container}>
@@ -55,7 +54,7 @@ function SignUp(props) {
           fullWidth
           id="email"
           label="Email"
-          onChange={setEmail}
+          onChange={(e) => setEmail(e.target.value)}
           className={`${classes.root} ${classes.formControl}`}
         />
 
@@ -65,7 +64,7 @@ function SignUp(props) {
             value={password}
             id="password"
             type="password"
-            onChange={setPassword}
+            onChange={(e) => setPassword(e.target.value)}
             labelWidth={70}
           />
         </FormControl>
@@ -76,7 +75,7 @@ function SignUp(props) {
             value={passwordConf}
             id="password_confirmation"
             type="password"
-            onChange={setPasswordConf}
+            onChange={(e) => setPasswordConf(e.target.value)}
             labelWidth={140}
           />
         </FormControl>
