@@ -21,13 +21,17 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const requestResponse = {
-  name: 'victor',
-  email: 'victor@victor.com',
-  token: 'afela234',
+  data: {
+    attributes: {
+      name: 'victor',
+      email_name: 'victor@victor.com',
+      token: 'afela234',
+    },
+  },
 };
 
 const server = setupServer(
-  rest.post('https://unknow-detections.herokuapp.com/api/v1/auth', (req, res, ctx) => res(ctx.json(
+  rest.post('https://unknow-detections.herokuapp.com/api/v1/authentication', (req, res, ctx) => res(ctx.json(
     requestResponse,
   ))),
 );
@@ -58,12 +62,12 @@ describe('Login', () => {
       fireEvent.click(submit);
       const actions = reduxStore.getActions();
       await waitFor(() => expect(actions.length).toBe(1));
-      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse });
+      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse.data.attributes });
     });
 
     it('render error list if invalid credentials', async () => {
-      server.use(rest.post('https://unknow-detections.herokuapp.com/api/v1/auth', (req, res, ctx) => res(
-        ctx.status(404),
+      server.use(rest.post('https://unknow-detections.herokuapp.com/api/v1/authentication', (req, res, ctx) => res(
+        ctx.status(422),
         ctx.json({
           errors: ['invalid credentials'],
         }),

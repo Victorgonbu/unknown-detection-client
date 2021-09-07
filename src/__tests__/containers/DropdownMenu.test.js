@@ -13,10 +13,12 @@ jest.mock('../../components/presentationals/AuthLinks', () => () => <div data-te
 describe('DropdownMenu', () => {
   const initialState = {
     user: {
-      dropdown: true,
       name: 'victor',
       email: '@victor',
     },
+    navbar: {
+      dropdown: true,
+    }
   };
   describe('initial redux state', () => {
     it('render UserLinks and FooterLinks if current user', () => {

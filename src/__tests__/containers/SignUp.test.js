@@ -22,9 +22,13 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const requestResponse = {
-  name: 'victor',
-  email: 'victor@victor.com',
-  token: 'afela234',
+ data: {
+   attributes: {
+    name: 'victor',
+    email: 'victor@victor.com',
+    token: 'afela234',
+   },
+ },
 };
 
 const server = setupServer(
@@ -57,7 +61,7 @@ describe('SignUp', () => {
       fireEvent.click(submitButton);
       const actions = reduxStore.getActions();
       await waitFor(() => expect(actions.length).toBe(1));
-      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse });
+      expect(actions[0]).toEqual({ type: 'SET_USER', payload: requestResponse.data.attributes });
     });
 
     it('render error messages if invalid credentials', async () => {

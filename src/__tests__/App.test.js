@@ -17,10 +17,8 @@ jest.mock('react-router-dom', () => ({
 
 describe('App', () => {
   const initialState = {
-    user: {
+    navbar: {
       dropdown: false,
-    },
-    posts: {
       searchActive: false,
     },
   };
@@ -32,7 +30,7 @@ describe('App', () => {
     expect(getByTestId('children')).toBeInTheDocument();
   });
   it('render search box if search is active', () => {
-    initialState.posts.searchActive = true;
+    initialState.navbar.searchActive = true;
     const { getByTestId } = render(<App />, initialState);
     expect(getByTestId('search-box')).toBeInTheDocument();
   });

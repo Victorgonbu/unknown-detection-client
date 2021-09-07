@@ -18,7 +18,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Navbar', () => {
   const initialState = {
-    posts: {
+    navbar: {
       currentPathName: 'posts',
       searchActive: false,
     },
