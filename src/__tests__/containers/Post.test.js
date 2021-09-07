@@ -51,7 +51,7 @@ const requestResponse = {
 };
 
 const server = setupServer(
-  rest.get('https://unknow-detections.herokuapp.com/api/v1/posts/1', (req, res, ctx) => res(ctx.json(
+  rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts/1', (req, res, ctx) => res(ctx.json(
     requestResponse,
   ))),
 );
@@ -92,7 +92,7 @@ describe('Post', () => {
   });
 
   it('render error message if unable to fetch from API', async () => {
-    server.use(rest.get('https://unknow-detections.herokuapp.com/api/v1/posts/1', (req, res, ctx) => res(ctx.status(500))));
+    server.use(rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts/1', (req, res, ctx) => res(ctx.status(500))));
     const { getByText } = render(<Post />, initialState);
     await waitFor(() => expect(getByText('Unable to fetch Post')).toBeInTheDocument());
   });

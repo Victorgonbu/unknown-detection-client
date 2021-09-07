@@ -31,10 +31,10 @@ const postsResponse = {
 };
 
 const server = setupServer(
-  rest.get('https://unknow-detections.herokuapp.com/api/v1/posts', (req, res, ctx) => res(ctx.json(
+  rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts', (req, res, ctx) => res(ctx.json(
     postsResponse,
   ))),
-  rest.get('https://unknow-detections.herokuapp.com/api/v1/favorites', (req, res, ctx) => res(ctx.json(
+  rest.get(process.env.REACT_APP_API_URL + '/api/v1/favorites', (req, res, ctx) => res(ctx.json(
     postsResponse,
   ))),
 
@@ -112,12 +112,12 @@ describe('Posts', () => {
 
   describe('render errors', () => {
     it('when unable to hit API', async () => {
-      server.use(rest.get('https://unknow-detections.herokuapp.com/api/v1/posts', (req, res, ctx) => res(ctx.status(500))));
+      server.use(rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts', (req, res, ctx) => res(ctx.status(500))));
       const { getByText } = render(<Posts />, initialState);
       await waitFor(() => expect(getByText('Unable to fetch from API, please try again in 20 seconds')).toBeInTheDocument());
     });
     it('when no matches are retrieved from search', async () => {
-      server.use(rest.get('https://unknow-detections.herokuapp.com/api/v1/posts', (req, res, ctx) => res(
+      server.use(rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts', (req, res, ctx) => res(
         ctx.status(404),
         ctx.json({
           errors: ['No matches found'],
@@ -128,7 +128,7 @@ describe('Posts', () => {
     });
 
     it('when no posts are retrieved', async () => {
-      server.use(rest.get('https://unknow-detections.herokuapp.com/api/v1/posts', (req, res, ctx) => res(
+      server.use(rest.get(process.env.REACT_APP_API_URL + '/api/v1/posts', (req, res, ctx) => res(
         ctx.json({
           data: [],
         }),
