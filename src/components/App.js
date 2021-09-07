@@ -36,8 +36,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  dropdownActive: state.user.dropdown,
-  searchActive: state.posts.searchActive,
+  dropdownActive: state.navbar.dropdown,
+  searchActive: state.navbar.searchActive,
 });
 
 export default connect(mapStateToProps)(App);

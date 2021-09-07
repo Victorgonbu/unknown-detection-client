@@ -36,7 +36,7 @@ const authenticateUser = (data, url, setErrors) => async (dispatch) => {
   try {
     const userData = { user: data };
     const request = await axios.post(url, userData);
-    dispatch(setUser(request.data));
+    dispatch(setUser(request.data.data.attributes));
   } catch (error) {
     setErrors(error.response.data.errors);
   }

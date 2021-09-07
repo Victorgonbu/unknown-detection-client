@@ -13,9 +13,10 @@ import Errors from '../presentationals/Errors';
 import useStyles from '../../hooks/useStyles';
 
 function SignUp(props) {
-  const [values, setValues] = useState({
-    name: '', email: '', password: '', password_confirmation: '',
-  });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConf, setPasswordConf] = useState('');
   const { attemptSignUp, currentUser } = props;
   const classes = useStyles();
   const navigate = useNavigate();
@@ -26,13 +27,14 @@ function SignUp(props) {
   }, [currentUser]);
 
   const handleSubmit = () => {
+    const values = {
+      name,
+      email,
+      password,
+      password_confirmation: passwordConf,
+    };
     attemptSignUp(values, SIGNUP, setErrors);
   };
-
-  const handleChange = (e) => {
-    setValues((state) => ({ ...state, [e.target.id]: e.target.value }));
-  };
-
   return (
     <div className={container}>
       <h1 className={title}>Sign Up</h1>
@@ -40,30 +42,30 @@ function SignUp(props) {
       <form className={formContainer}>
         <TextField
           variant="outlined"
-          value={values.name}
+          value={name}
           fullWidth
           id="name"
           label="Name"
-          onChange={handleChange}
+          onChange={(e) => setName(e.target.value)}
           className={`${classes.root} ${classes.formControl}`}
         />
         <TextField
           variant="outlined"
-          value={values.email}
+          value={email}
           fullWidth
           id="email"
           label="Email"
-          onChange={handleChange}
+          onChange={setEmail}
           className={`${classes.root} ${classes.formControl}`}
         />
 
         <FormControl variant="outlined" className={`${classes.formControl} ${classes.root}`}>
           <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
-            value={values.password}
+            value={password}
             id="password"
             type="password"
-            onChange={handleChange}
+            onChange={setPassword}
             labelWidth={70}
           />
         </FormControl>
@@ -71,10 +73,10 @@ function SignUp(props) {
         <FormControl variant="outlined" className={`${classes.formControl} ${classes.root}`}>
           <InputLabel htmlFor="password_confirmation">Confirm Password</InputLabel>
           <OutlinedInput
-            value={values.password_confirmation}
+            value={passwordConf}
             id="password_confirmation"
             type="password"
-            onChange={handleChange}
+            onChange={setPasswordConf}
             labelWidth={140}
           />
         </FormControl>

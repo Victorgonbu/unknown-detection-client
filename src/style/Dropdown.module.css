@@ -46,6 +46,7 @@
 }
 
 .userName {
+  margin-bottom: 5px;
   color: var(--light-black);
   font-size: 1.2em;
   font-weight: bold;
@@ -93,7 +94,7 @@
 }
 
 .activeLink {
-  border-left: 2px solid orange;
+  border-left: 2px solid var(--orange);
 }
 
 .footer {

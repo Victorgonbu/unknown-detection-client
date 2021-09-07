@@ -1,7 +1,6 @@
 const userReducer = (state = {
   name: null,
   token: null,
-  dropdown: false,
 }, action) => {
   const { payload, type } = action;
   switch (type) {
@@ -9,14 +8,11 @@ const userReducer = (state = {
       return {
         ...state,
         name: payload.name,
-        email: payload.email,
+        email: payload.email_name,
         token: payload.token,
       };
     case 'SIGN_OUT':
       return { ...state, name: null, token: null };
-
-    case 'TOGGLE_DROPDOWN':
-      return { ...state, dropdown: !state.dropdown };
     default:
       return state;
   }

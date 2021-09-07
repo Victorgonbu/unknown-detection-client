@@ -64,7 +64,7 @@ DropdownMenu.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  dropdownActive: state.user.dropdown,
+  dropdownActive: state.navbar.dropdown,
   username: state.user.name,
   email: state.user.email,
 });

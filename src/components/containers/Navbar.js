@@ -45,8 +45,8 @@ Navbar.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  currentPathName: state.posts.currentPathName,
-  searchActive: state.posts.searchActive,
+  currentPathName: state.navbar.currentPathName,
+  searchActive: state.navbar.searchActive,
 });
 
 const mapDispatchToProps = (dispatch) => ({
