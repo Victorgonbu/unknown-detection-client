@@ -5,17 +5,13 @@ import { container, inputText, searchButton } from '../../style/SearchBox.module
 function SearchBox() {
   const [input, setInput] = useState('');
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
   return (
     <div className={container}>
       <input
         type="text"
         className={inputText}
         placeholder="Search posts by title"
-        onChange={handleInputChange}
+        onChange={(e) => setInput(e.target.value)}
         value={input}
       />
       <Link
