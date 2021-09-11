@@ -1,0 +1,82 @@
+.container {
+  height: 91vh;
+}
+
+.postInfo {
+  background-color: #fff;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  min-height: 6em;
+  width: 100%;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  color: var(--light-black);
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.titleFavorite {
+  margin-right: 10px;
+}
+
+.postTitle {
+  margin-bottom: 0.5em;
+}
+
+.postLocation {
+  text-align: center;
+  border-left: 1px solid var(--light-gray);
+  padding-left: 10px;
+}
+
+.postFavorite {
+  font-weight: 100;
+  color: #000;
+}
+
+.favoriteCounter {
+  font-weight: 700;
+  color: var(--light-black);
+  margin-left: 0.5em;
+}
+
+.favoriteIcon {
+  color: var(--light-gray);
+}
+
+.activeFavorite {
+  color: var(--red);
+}
+
+.locationLabel {
+  font-size: 0.8em;
+  padding-top: 0.1em;
+  color: gray;
+}
+
+.postImage {
+  width: 100%;
+  height: 300px;
+}
+
+.carouselContainer {
+  box-sizing: border-box;
+  height: calc(100% - 2rem);
+  align-items: flex-start;
+  padding-top: 2em;
+}
+
+.carouselItem {
+  flex: none;
+  margin: 0 10px;
+  max-width: calc(80vw - 7px);
+  border: none;
+  background-color: #fff;
+  box-shadow: 0 7px 15px var(--light-gray);
+}
+
+.carouselDots {
+  bottom: 10vh;
+}

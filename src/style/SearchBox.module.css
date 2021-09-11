@@ -1,0 +1,18 @@
+
+/* stylelint-disable value-keyword-case */
+.container {
+  composes: flexCentered from './App.module.css';
+  padding: 0.5em;
+  transition: 200ms ease-out;
+}
+
+.inputText {
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+}
+
+.searchButton {
+  composes: appButton from './Navbar.module.css';
+  border: 1px solid var(--light-gray);
+  padding: 9.5px;
+}

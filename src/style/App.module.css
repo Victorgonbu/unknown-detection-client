@@ -1,0 +1,27 @@
+.flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  position: relative;
+  display: flex;
+  overflow-x: hidden;
+  max-width: 1500px;
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.appContainer {
+  min-width: 100%;
+  position: relative;
+  left: -200px;
+  box-shadow: -3px 5px 7px var(--light-gray);
+  transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.active {
+  left: 0;
+  height: 97vh;
+}

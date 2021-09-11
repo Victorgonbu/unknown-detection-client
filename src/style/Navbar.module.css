@@ -1,0 +1,30 @@
+
+/* stylelint-disable value-keyword-case */
+.nav {
+  padding: 0 1em;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appButton {
+  border: none;
+  background-color: var(--back-color);
+  color: var(--light-black);
+  text-decoration: none;
+}
+
+.navButton {
+  composes: appButton;
+  font-size: 1.1em;
+  width: 2em;
+}
+
+.currentPathName {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--light-black);
+  text-align: center;
+  padding: 0 1em;
+}

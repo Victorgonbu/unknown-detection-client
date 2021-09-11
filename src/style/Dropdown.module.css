@@ -1,0 +1,106 @@
+/* stylelint-disable value-keyword-case */
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 200px;
+  left: -100%;
+  transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  height: 100vh;
+  padding: 3em 0 1em 0;
+  background-color: var(--back-color);
+}
+
+.title {
+  font-size: 1.6em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.active {
+  left: 0;
+}
+
+.authLinks {
+  padding: 0 1em;
+}
+
+.authLink {
+  display: block;
+  border: 1px solid var(--light-gray);
+  text-align: center;
+  padding: 1em;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.top {
+  height: 90%;
+}
+
+.userInfo {
+  text-align: left;
+  margin-bottom: 1em;
+  padding: 0 2rem;
+}
+
+.userName {
+  margin-bottom: 5px;
+  color: var(--light-black);
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.userEmail {
+  color: gray;
+}
+
+.iconContainer {
+  composes: flexCentered from './App.module.css';
+  height: 3.2em;
+  width: 3.2em;
+  border: 1px solid var(--light-gray);
+  border-radius: 50%;
+  margin-bottom: 0.5em;
+}
+
+.icon {
+  font-size: 2em;
+}
+
+.links {
+  padding: 1em 0;
+  margin-top: 1em;
+}
+
+.link {
+  color: var(--light-black);
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.7em 2rem;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  background-color: var(--back-color);
+}
+
+.footLink {
+  composes: link;
+  border: 1px solid var(--var-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  color: gray;
+}
+
+.activeLink {
+  border-left: 2px solid var(--orange);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 10%;
+  vertical-align: bottom;
+}

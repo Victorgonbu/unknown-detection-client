@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Unknown Detections - Microverse final capstone project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The world is a big place and strange places/objects are everywhere.
+This React web app servers as a platform to look for posts of strange places or things found by other people around the world. the RoR backend of this app can be found [here](https://github.com/Shaqri/unknown-detection-api).
 
-## Available Scripts
+## Usage
 
-In the project directory, you can run:
+This app counts with fully integrated JWT user authentication to save all those strange places or places where strange objects are found just click the favorite button to add them to your favorites list. Nevertheless, all posts can be viewed by no authenticated users.
 
-### `yarn start`
+It also counts with a search box to look for any post you want by just typing its title or part of it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+So, if you want to save those places/objects that sound interesting in visiting on your next vacation, do not doubt to sign in!.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## App screenshots
 
-### `yarn test`
+- SIGN IN  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div align="center">
+  <img src="/src/imgs/screenshots/SIGNUP.png" alt='sign up screenshot' /> 
+</div> 
 
-### `yarn build`
+- LOG IN  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<div align="center">
+  <img src="/src/imgs/screenshots/LOGIN.png" alt='login screenshot' /> 
+</div> 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ALL POSTS  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div align="center">
+  <img src="/src/imgs/screenshots/ALLPOSTS.png" alt='all posts screenshot' /> 
+</div> 
 
-### `yarn eject`
+- SEARCH BOX  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<div align="center">
+  <img src="/src/imgs/screenshots/SEARCHBOX.png" alt='search box screenshot' /> 
+</div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- FAVORITES  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<div align="center">
+  <img src="/src/imgs/screenshots/FAVORITES.png" alt='favorites screenshot' /> 
+</div> 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- DROPDOWN  
 
-## Learn More
+<div align="center">
+  <img src="/src/imgs/screenshots/DROPDOWN.png" alt='dropdown screenshot' /> 
+</div>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- POST  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<div align="center">
+  <img src="/src/imgs/screenshots/POST.png" alt='post screenshot' /> 
+</div>
 
-### Code Splitting
+## Built With
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Javascript
+- HTML
+- CSS
+- Node.js
+- React
+- React-DOM
+- Redux
+- prop-types
+- Ruby on Rails
+- React testing library
 
-### Analyzing the Bundle Size
+## Live Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[Netlify deploy link](https://unknown-detections.netlify.app/posts)
 
-### Making a Progressive Web App
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To get a local copy up and running follow these simple example steps.
 
-### Advanced Configuration
+- Git clone https://github.com/Shaqri/unknown-detection-client.git
+- Move to the root directory in your command line
+- run `yarn install` to install all dependencies
+- run `yarn start` to start the app in your localhost
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Test   
 
-### Deployment
+To run all available tests run `yarn test` in your terminal.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## ENV variables  
 
-### `yarn build` fails to minify
+To implement ENV variables follow the examples contained in the '.evn-example' file located in the root directory and after modifying the file rename it with '.env'.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author
+👤 Victor Gonzalez  
+- Github: [@Shaqri](https://github.com/Shaqri)
+- Twitter: [@victorgonbu1](https://twitter.com/Victorgonbu1)
+- LinkedIn: [Victor Gonzalez](https://www.linkedin.com/in/victor-manuel-gonzalez-buitrago)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!

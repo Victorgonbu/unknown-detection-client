@@ -1,0 +1,76 @@
+.backdropContainer {
+  width: 100%;
+  height: 50%;
+  max-height: 500px;
+  position: relative;
+}
+
+.fullSize {
+  width: 100%;
+  height: 100%;
+}
+
+.absoluteLabel {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 1em;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  font-weight: 900;
+}
+
+.absoluteLabel::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  box-shadow: 0 -1px 12px #000;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.authorDetails {
+  display: flex;
+}
+
+.authorName {
+  padding: 0.5em;
+}
+
+.description {
+  padding: 1.5em 2em;
+  min-height: calc(43% - 2rem);
+}
+
+.descriptionTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionTitle {
+  display: inline-block;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1em;
+}
+
+.descriptionText {
+  color: var(--light-black);
+}
+
+.favoriteButton {
+  width: 100%;
+  height: 7%;
+  max-height: 3em;
+  background-color: var(--orange);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  border: 1px solid var(--orange);
+}

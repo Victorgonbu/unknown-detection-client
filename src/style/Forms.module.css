@@ -1,0 +1,37 @@
+
+/* stylelint-disable value-keyword-case */
+.container {
+  composes: flexCentered from './App.module.css';
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.formContainer {
+  width: 100%;
+  padding: 0 1em;
+  max-width: 400px;
+  composes: flexCentered from './App.module.css';
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.button {
+  margin-top: 1em;
+  font-size: 1.1em;
+  padding: 0.7em 1.5em;
+  background-color: var(--orange);
+  color: #fff;
+  border: 1px solid var(--orange);
+  border-radius: 20px;
+}
+
+.errors {
+  color: var(--orange);
+  text-align: center;
+  padding-top: 1rem;
+}
